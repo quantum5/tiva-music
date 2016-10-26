@@ -73,6 +73,13 @@ const struct {
 };
 
 int main(void) {
+	printf("System start. Clock rate is %d Hz.\n", SysCtlClockGet());
+
+	// This sets the clock to 80 MHz.
+	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL |SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+
+	printf("Updated clock rate to %d Hz.\n", SysCtlClockGet());
+
 	// Enable GPIO block F.
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
@@ -81,10 +88,10 @@ int main(void) {
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 
     for (int i = 0; i < (sizeof song / sizeof *song); ++i) {
-    	printf("Playing %dHz tone for %dms\n", song[i].freq, song[i].len);
+    	printf("Playing %d Hz tone for %d ms\n", song[i].freq, song[i].len);
 
     	if (!song[i].freq) {
-    		SysCtlDelay(song[i].len * SysCtlClockGet() / 3000);
+    		SysCtlDelay(song[i].len * (SysCtlClockGet() / 3000));
     		continue;
     	}
 
