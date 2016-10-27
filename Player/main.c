@@ -4,7 +4,10 @@
 #include "inc/tm4c123gh6pm.h"
 #include "inc/hw_memmap.h"
 #include "driverlib/gpio.h"
+#include "driverlib/rom.h"
 #include "driverlib/sysctl.h"
+
+#include "player.h"
 
 const struct {
 	int freq;
@@ -76,9 +79,10 @@ int main(void) {
 	printf("System start. Clock rate is %d Hz.\n", SysCtlClockGet());
 
 	// This sets the clock to 80 MHz.
-	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL |SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
 
-	printf("Updated clock rate to %d Hz.\n", SysCtlClockGet());
+	uint32_t clock_rate = SysCtlClockGet();
+	printf("Updated clock rate to %u Hz.\n", clock_rate);
 
 	// Enable GPIO block F.
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
@@ -91,19 +95,19 @@ int main(void) {
     	printf("Playing %d Hz tone for %d ms\n", song[i].freq, song[i].len);
 
     	if (!song[i].freq) {
-    		SysCtlDelay(song[i].len * (SysCtlClockGet() / 3000));
+    		ROM_SysCtlDelay(song[i].len * (clock_rate / 3000));
     		continue;
     	}
 
-    	int cycles = SysCtlClockGet() / song[i].freq / 6;
-    	int loops = song[i].len * (SysCtlClockGet() / 6000) / cycles;
+    	int cycles = clock_rate / song[i].freq / 6;
+    	int loops = song[i].len * (clock_rate / 6000) / cycles;
 
 		while (loops --> 0) {
 			// Toggle square wave on, wait, off, then wait again.
 			GPIO_PORTF_DATA_R |= GPIO_PIN_2;
-			SysCtlDelay(cycles);
+			ROM_SysCtlDelay(cycles);
 			GPIO_PORTF_DATA_R &= ~GPIO_PIN_2;
-			SysCtlDelay(cycles);
+			ROM_SysCtlDelay(cycles);
 		}
     }
 }
