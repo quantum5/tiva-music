@@ -6,6 +6,7 @@
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/pwm.h"
+#include "driverlib/rom.h"
 #include "driverlib/sysctl.h"
 
 #include "player.h"
@@ -25,20 +26,22 @@ void pwm_main(void) {
 	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_2);
 
     // PWM_GEN_3 covers PWM_OUT_6 and PWM_OUT_7.
-	PWMGenConfigure(PWM1_BASE, PWM_GEN_3, PWM_GEN_MODE_UP_DOWN | PWM_GEN_MODE_NO_SYNC | PWM_GEN_MODE_GEN_SYNC_LOCAL);
+	PWMGenConfigure(PWM1_BASE, PWM_GEN_3, PWM_GEN_MODE_UP_DOWN | PWM_GEN_MODE_NO_SYNC);
 	PWMGenEnable(PWM1_BASE, PWM_GEN_3);
+	PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, 15);
 	PWMOutputUpdateMode(PWM1_BASE, PWM_OUT_6_BIT, PWM_OUTPUT_MODE_SYNC_LOCAL);
 	PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, true);
 
 	int sample = SysCtlClockGet() / sampling;
-	int wait = sample / 3;
+	int wait = SysCtlClockGet() / sampling / 3 - 1;
 
 	while (1) {
 		for (int i = 0; i < sizeof pcm_data; ++i) {
-			PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, 15);
-			PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
-			PWMSyncUpdate(PWM1_BASE, PWM_GEN_3);
-			SysCtlDelay(wait);
+			// Effectively: ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
+			// UP_DOWN mode divides stuff by 2. Apparently inverting is required as well.
+			//PWM1_3_CMPA_R = 7 - (pcm_data[i] >> 5);
+			ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
+			ROM_SysCtlDelay(wait);
 		}
 	}
 }
