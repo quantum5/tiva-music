@@ -11,9 +11,9 @@
 
 #include "player.h"
 
-extern const unsigned char pcm_data[64];
+extern const unsigned char pcm_data[6960];
 
-int sampling = 64*440;
+int sampling = 8000;
 
 void pwm_main(void) {
 	// Make PWM clock run as fast as CPU clock.
@@ -28,7 +28,7 @@ void pwm_main(void) {
     // PWM_GEN_3 covers PWM_OUT_6 and PWM_OUT_7.
 	PWMGenConfigure(PWM1_BASE, PWM_GEN_3, PWM_GEN_MODE_UP_DOWN | PWM_GEN_MODE_NO_SYNC);
 	PWMGenEnable(PWM1_BASE, PWM_GEN_3);
-	PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, 15);
+	PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, 256);
 	PWMOutputUpdateMode(PWM1_BASE, PWM_OUT_6_BIT, PWM_OUTPUT_MODE_SYNC_LOCAL);
 	PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, true);
 
@@ -39,8 +39,8 @@ void pwm_main(void) {
 		for (int i = 0; i < sizeof pcm_data; ++i) {
 			// Effectively: ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
 			// UP_DOWN mode divides stuff by 2. Apparently inverting is required as well.
-			//PWM1_3_CMPA_R = 7 - (pcm_data[i] >> 5);
-			ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
+			PWM1_3_CMPA_R = 128 - (pcm_data[i] >> 2);
+			//ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
 			ROM_SysCtlDelay(wait);
 		}
 	}
