@@ -26,7 +26,7 @@ void pwm_main(void) {
 	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_2);
 
     // PWM_GEN_3 covers PWM_OUT_6 and PWM_OUT_7.
-	PWMGenConfigure(PWM1_BASE, PWM_GEN_3, PWM_GEN_MODE_UP_DOWN | PWM_GEN_MODE_NO_SYNC);
+	PWMGenConfigure(PWM1_BASE, PWM_GEN_3, PWM_GEN_MODE_DOWN | PWM_GEN_MODE_NO_SYNC);
 	PWMGenEnable(PWM1_BASE, PWM_GEN_3);
 	PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, 256);
 	PWMOutputUpdateMode(PWM1_BASE, PWM_OUT_6_BIT, PWM_OUTPUT_MODE_SYNC_LOCAL);
@@ -37,10 +37,10 @@ void pwm_main(void) {
 
 	while (1) {
 		for (int i = 0; i < sizeof pcm_data; ++i) {
-			// Effectively: ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
 			// UP_DOWN mode divides stuff by 2. Apparently inverting is required as well.
-			PWM1_3_CMPA_R = 128 - (pcm_data[i] >> 2);
-			//ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i] >> 4);
+			// Effectively:
+			//ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i]);
+			PWM1_3_CMPA_R = 256 - pcm_data[i];
 			ROM_SysCtlDelay(wait);
 		}
 	}

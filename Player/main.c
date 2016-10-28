@@ -91,7 +91,7 @@ int main(void) {
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
     while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
 
-    //pwm_main();
+    pwm_main();
 
     // Set PF2 pin to output.
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
