@@ -83,30 +83,30 @@ static bool pcm_replay(void) {
 }
 
 int main(void) {
-	printf("System start. Clock rate is %d Hz.\n", SysCtlClockGet());
+	printf("System start. Clock rate is %d Hz.\n", ROM_SysCtlClockGet());
 
 	// This sets the clock to 40 MHz.
 	// Have yet to figure out how to get PWM working on 80 MHz.
-	SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+	ROM_SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
 
-	uint32_t clock_rate = SysCtlClockGet();
+	uint32_t clock_rate = ROM_SysCtlClockGet();
 	printf("Updated clock rate to %u Hz.\n", clock_rate);
 
 	// Enable GPIO block F.
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-    while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
 
     // Enable timers.
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
-    while (!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0));
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0));
     ROM_IntMasterEnable();
 
 	// Enable PWM (for PF2).
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
-	while (!SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1));
+	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
+	while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1));
 
 	// Make PWM clock run as fast as CPU clock.
-	SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
+	ROM_SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
 
     pwm_setup();
     pwm_finish_register(pcm_replay);
@@ -114,7 +114,7 @@ int main(void) {
     while (1);
 
     // Set PF2 pin to output.
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+    ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 
     for (int i = 0; i < (sizeof song / sizeof *song); ++i) {
     	printf("Playing %d Hz tone for %d ms\n", song[i].freq, song[i].len);
