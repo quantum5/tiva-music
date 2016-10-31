@@ -79,6 +79,7 @@ extern const unsigned char pcm_data[179466];
 
 static bool pcm_replay(void) {
 	pwm_swap_buffer(pcm_data, sizeof pcm_data);
+	return 1;
 }
 
 int main(void) {
