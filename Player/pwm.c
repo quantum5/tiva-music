@@ -23,7 +23,7 @@ void pwm_next_sample(void) {
 		pwm_playing = false;
 		ROM_TimerDisable(TIMER0_BASE, TIMER_A);
 	} else
-		PWM1_3_CMPA_R = 256 - *pwm_sample;
+		PWM1_3_CMPA_R = *pwm_sample;
 }
 
 void pwm_setup(void) {
@@ -54,7 +54,7 @@ void pwm_play(const unsigned char *pcm, int size, int sample_rate) {
 	pwm_sample_end = pcm + size;
 	ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, ROM_SysCtlClockGet() / sample_rate);
 
-	PWM1_3_CMPA_R = 256 - *pwm_sample;
+	PWM1_3_CMPA_R = *pwm_sample;
 	ROM_TimerEnable(TIMER0_BASE, TIMER_A);
 }
 
