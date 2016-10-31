@@ -12,13 +12,14 @@
 
 #include "player.h"
 
-static const unsigned char *pwm_sample;
-static const unsigned char *pwm_sample_end;
+static pwm_finish_fn pwm_finish_callback;
+const unsigned char *pwm_sample;
+const unsigned char *pwm_sample_end;
 bool pwm_playing;
 
 void pwm_next_sample(void) {
 	ROM_TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-	if (++pwm_sample == pwm_sample_end) {
+	if (++pwm_sample == pwm_sample_end && (!pwm_finish_callback || !pwm_finish_callback())) {
 		pwm_playing = false;
 		TimerDisable(TIMER0_BASE, TIMER_A);
 	} else
@@ -42,6 +43,11 @@ void pwm_setup(void) {
 	ROM_IntEnable(INT_TIMER0A);
 }
 
+void pwm_swap_buffer(const unsigned char *pcm, int size) {
+	pwm_sample = pcm;
+	pwm_sample_end = pcm + size;
+}
+
 void pwm_play(const unsigned char *pcm, int size, int sample_rate) {
 	pwm_playing = true;
 	pwm_sample = pcm;
@@ -50,6 +56,10 @@ void pwm_play(const unsigned char *pcm, int size, int sample_rate) {
 
 	PWM1_3_CMPA_R = 256 - *pwm_sample;
 	TimerEnable(TIMER0_BASE, TIMER_A);
+}
+
+void pwm_finish_register(pwm_finish_fn callback) {
+	pwm_finish_callback = callback;
 }
 
 void pwm_wait(void) {

@@ -77,6 +77,10 @@ const struct {
 
 extern const unsigned char pcm_data[179466];
 
+static bool pcm_replay(void) {
+	pwm_swap_buffer(pcm_data, sizeof pcm_data);
+}
+
 int main(void) {
 	printf("System start. Clock rate is %d Hz.\n", SysCtlClockGet());
 
@@ -104,10 +108,9 @@ int main(void) {
 	SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
 
     pwm_setup();
-    while (1) {
-    	pwm_play(pcm_data, sizeof pcm_data, 8000);
-    	pwm_wait();
-    }
+    pwm_finish_register(pcm_replay);
+    pwm_play(pcm_data, sizeof pcm_data, 8000);
+    while (1);
 
     // Set PF2 pin to output.
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
