@@ -8,20 +8,24 @@
 #include "driverlib/pwm.h"
 #include "driverlib/rom.h"
 #include "driverlib/sysctl.h"
+#include "driverlib/timer.h"
 
 #include "player.h"
 
-extern const unsigned char pcm_data[6960];
+static const unsigned char *pwm_sample;
+static const unsigned char *pwm_sample_end;
+bool pwm_playing;
 
-int sampling = 8000;
+void pwm_next_sample(void) {
+	ROM_TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+	if (++pwm_sample == pwm_sample_end) {
+		pwm_playing = false;
+		TimerDisable(TIMER0_BASE, TIMER_A);
+	} else
+		PWM1_3_CMPA_R = 256 - *pwm_sample;
+}
 
-void pwm_main(void) {
-	// Make PWM clock run as fast as CPU clock.
-	SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
-
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
-	while (!SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1));
-
+void pwm_setup(void) {
     GPIOPinConfigure(GPIO_PF2_M1PWM6);
 	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_2);
 
@@ -32,16 +36,22 @@ void pwm_main(void) {
 	PWMOutputUpdateMode(PWM1_BASE, PWM_OUT_6_BIT, PWM_OUTPUT_MODE_SYNC_LOCAL);
 	PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, true);
 
-	int sample = SysCtlClockGet() / sampling;
-	int wait = SysCtlClockGet() / sampling / 3 - 1;
+	// Configure timers.
+	TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
+	TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+	ROM_IntEnable(INT_TIMER0A);
+}
 
-	while (1) {
-		for (int i = 0; i < sizeof pcm_data; ++i) {
-			// UP_DOWN mode divides stuff by 2. Apparently inverting is required as well.
-			// Effectively:
-			//ROM_PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, pcm_data[i]);
-			PWM1_3_CMPA_R = 256 - pcm_data[i];
-			ROM_SysCtlDelay(wait);
-		}
-	}
+void pwm_play(const unsigned char *pcm, int size, int sample_rate) {
+	pwm_playing = true;
+	pwm_sample = pcm;
+	pwm_sample_end = pcm + size;
+	TimerLoadSet(TIMER0_BASE, TIMER_A, SysCtlClockGet() / sample_rate);
+
+	PWM1_3_CMPA_R = 256 - *pwm_sample;
+	TimerEnable(TIMER0_BASE, TIMER_A);
+}
+
+void pwm_wait(void) {
+	while (pwm_playing);
 }

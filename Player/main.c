@@ -75,7 +75,7 @@ const struct {
 		{554, 22500},
 };
 
-void pwm_main(void);
+extern const unsigned char pcm_data[179466];
 
 int main(void) {
 	printf("System start. Clock rate is %d Hz.\n", SysCtlClockGet());
@@ -91,7 +91,23 @@ int main(void) {
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
     while (!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
 
-    pwm_main();
+    // Enable timers.
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+    while (!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0));
+    ROM_IntMasterEnable();
+
+	// Enable PWM (for PF2).
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
+	while (!SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1));
+
+	// Make PWM clock run as fast as CPU clock.
+	SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
+
+    pwm_setup();
+    while (1) {
+    	pwm_play(pcm_data, sizeof pcm_data, 8000);
+    	pwm_wait();
+    }
 
     // Set PF2 pin to output.
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
