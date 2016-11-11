@@ -108,6 +108,8 @@ int main(void) {
 	// Make PWM clock run as fast as CPU clock.
 	ROM_SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
 
+	//printf("USB Host: %d\n", usb_ms_init());
+
     pwm_setup();
     pwm_finish_register(pcm_replay);
     pwm_play(pcm_data, sizeof pcm_data, 8000);

@@ -19,4 +19,7 @@ extern const unsigned char *pwm_sample_end;
 typedef bool (*pwm_finish_fn)(void);
 void pwm_finish_register(pwm_finish_fn callback);
 
+// USB access functions.
+bool usb_ms_init(void);
+
 #endif /* PLAYER_H_ */
