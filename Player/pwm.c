@@ -66,6 +66,12 @@ void pwm_wait(void) {
 	while (pwm_playing);
 }
 
+void pwm_stop(void) {
+	ROM_TimerDisable(TIMER0_BASE, TIMER_A);
+	pwm_playing = false;
+	ROM_PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, false);
+}
+
 volatile bool sw_playing;
 const note *sw_note, *sw_note_end;
 int sw_note_total, sw_note_oscis;

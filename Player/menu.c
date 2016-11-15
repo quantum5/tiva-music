@@ -13,9 +13,11 @@
 #include "orbit/OrbitOled.h"
 #include "orbit/OrbitOledChar.h"
 
+
+extern const pcm_fragment sample_pcm;
 const menu_item top_level_menu[] = {
 		{"The Phantom of the Opera", NULL, 0, phantom_menu, ARRAY_SIZE(phantom_menu)},
-		{"Second Item", NULL, 0, NULL, 0},
+		{"PCM Sample", (void*) &sample_pcm, MENU_TYPE_PCM_SONG, NULL, 0},
 		{"Third Item", NULL, 0, NULL, 0},
 		{"Fourth Item", NULL, 0, NULL, 0},
 		{"Fifth Item", NULL, 0, NULL, 0},
@@ -76,8 +78,10 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 				show_menu(menu[index].children, menu[index].child_count, menu[index].name);
 			} else switch (menu[index].modifiers & MENU_TYPE_MASK) {
 				case MENU_TYPE_SW_SONG:
-					printf("Play song: %s\n", menu[index].name);
 					play_sw_song(menu[index].data, menu[index].name);
+					break;
+				case MENU_TYPE_PCM_SONG:
+					play_pcm_fragment(menu[index].data, menu[index].name);
 					break;
 			}
 		} else if (status & 8) {

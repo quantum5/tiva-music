@@ -12,6 +12,7 @@ void pwm_setup(void);
 void pwm_play(const unsigned char *pcm, int size, int sample_rate);
 void pwm_swap_buffer(const unsigned char *pcm, int size);
 void pwm_wait(void);
+void pwm_stop(void);
 extern volatile bool pwm_playing; // Mutate at your own peril.
 
 // Background square playback functions.
@@ -59,6 +60,12 @@ typedef struct sw_song {
 	int lyrics_len;
 } sw_song;
 
+typedef struct pcm_fragment {
+	const unsigned char *pcm;
+	int size;
+	int sample_rate;
+} pcm_fragment;
+
 // Menu structures.
 #define MENU_TYPE_MASK		0x0000000F
 #define MENU_TYPE_SW_SONG	0x00000001
@@ -81,6 +88,7 @@ void show_menu(const menu_item *menu, int size, const char *title);
 
 // Playing.
 void play_sw_song(const sw_song *song, const char *title);
+void play_pcm_fragment(const pcm_fragment *data, const char *title);
 
 // More sane alternatives to Gene Apperson.
 #define OrbitOledSetRC(row, column) OrbitOledSetCursor(column, row)
