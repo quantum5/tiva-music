@@ -22,6 +22,7 @@ typedef struct note {
 void sw_play(const note *notes, int size);
 void sw_wait(void);
 void sw_stop(void);
+extern volatile int sw_note_num;
 extern volatile bool sw_playing; // Mutate at your own peril.
 
 // Low level PWM API, unstable interface.

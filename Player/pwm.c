@@ -74,6 +74,7 @@ void pwm_stop(void) {
 
 volatile bool sw_playing;
 const note *sw_note, *sw_note_end;
+volatile int sw_note_num;
 int sw_note_total, sw_note_oscis;
 
 static void sw_set_note(const note *note) {
@@ -89,6 +90,7 @@ void sw_play(const note *notes, int size) {
 	sw_playing = true;
 	sw_note = notes;
 	sw_note_end = notes + size;
+	sw_note_num = 0;
 
 	ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 	sw_set_note(sw_note);
@@ -97,6 +99,7 @@ void sw_play(const note *notes, int size) {
 
 void sw_toggle_output(void) {
 	if (!sw_note_total) {
+		++sw_note_num;
 		if (++sw_note < sw_note_end)
 			sw_set_note(sw_note);
 		else {
