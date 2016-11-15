@@ -116,7 +116,7 @@ int main(void) {
 	// Make PWM clock run as fast as CPU clock.
 	ROM_SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
 
-	// Take the NMI off PF0 so we can use SW0.
+	// Take the NMI off PF0 so we can use SW2 (PF0).
 	GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;
 	GPIO_PORTF_CR_R |= 0x01;
 	GPIO_PORTF_AFSEL_R |= 0x400;
