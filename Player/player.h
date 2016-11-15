@@ -13,7 +13,14 @@ void pwm_play(const unsigned char *pcm, int size, int sample_rate);
 void pwm_swap_buffer(const unsigned char *pcm, int size);
 void pwm_wait(void);
 
-extern bool pwm_playing; // Mutate at your own peril.
+// Background square playback functions.
+typedef struct note {
+	uint16_t freq, len;
+} note;
+void sw_play(const note *notes, int size);
+void sw_wait(void);
+
+extern volatile bool pwm_playing; // Mutate at your own peril.
 
 // Low level PWM API, unstable interface.
 extern const unsigned char *pwm_sample;

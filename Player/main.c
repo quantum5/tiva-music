@@ -5,14 +5,12 @@
 #include "inc/hw_memmap.h"
 #include "driverlib/gpio.h"
 #include "driverlib/rom.h"
+#include "driverlib/pwm.h"
 #include "driverlib/sysctl.h"
 
 #include "player.h"
 
-const struct {
-	int freq;
-	int len;
-} song[] = {
+const note song[] = {
 		// Music of the Night, from the Phantom of the Opera, by Andrew Lloyd Webber.
 		{349, 1000}, {207, 1000}, {311, 1000}, {207, 1000}, {277, 500}, {311, 500},
 		{349, 500}, {369, 500}, {311, 1000}, {415, 1000}, {349, 1000}, {207, 1000},
@@ -91,7 +89,7 @@ int main(void) {
 	// Have yet to figure out how to get PWM working on 80 MHz.
 	ROM_SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
 
-	uint32_t clock_rate = ROM_SysCtlClockGet();
+	clock_rate = ROM_SysCtlClockGet();
 	printf("Updated clock rate to %u Hz.\n", clock_rate);
 
 	// Enable GPIO block F.
@@ -124,33 +122,11 @@ int main(void) {
 	GPIO_PORTF_LOCK_R = 0;
 
 	//printf("USB Host: %d\n", usb_ms_init());
-	menu_test();
+	//menu_test();
 
-    /*pwm_setup();
-    pwm_finish_register(pcm_replay);
-    pwm_play(pcm_data, sizeof pcm_data, 8000);
-    while (1);*/
-
-    // Set PF2 pin to output.
-    ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
-
-    for (int i = 0; i < (sizeof song / sizeof *song); ++i) {
-    	printf("Playing %d Hz tone for %d ms\n", song[i].freq, song[i].len);
-
-    	if (!song[i].freq) {
-    		ROM_SysCtlDelay(song[i].len * (clock_rate / 3000));
-    		continue;
-    	}
-
-    	int cycles = clock_rate / song[i].freq / 6;
-    	int loops = song[i].len * (clock_rate / 6000) / cycles;
-
-		while (loops --> 0) {
-			// Toggle square wave on, wait, off, then wait again.
-			GPIO_PORTF_DATA_R |= GPIO_PIN_2;
-			ROM_SysCtlDelay(cycles);
-			GPIO_PORTF_DATA_R &= ~GPIO_PIN_2;
-			ROM_SysCtlDelay(cycles);
-		}
-    }
+    pwm_setup();
+    /*pwm_finish_register(pcm_replay);
+    pwm_play(pcm_data, sizeof pcm_data, 8000);*/
+    sw_play(song, ARRAY_SIZE(song));
+    while (1);
 }
