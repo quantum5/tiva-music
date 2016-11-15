@@ -26,6 +26,13 @@ void pwm_finish_register(pwm_finish_fn callback);
 // USB access functions.
 bool usb_ms_init(void);
 
+// Orbit booster pack.
+void initialize_orbit_button(uint32_t base, uint8_t pin);
+#define initialize_orbit_button_1() initialize_orbit_button(GPIO_PORTD_BASE, GPIO_PIN_2)
+#define initialize_orbit_button_2() initialize_orbit_button(GPIO_PORTE_BASE, GPIO_PIN_0)
+#define read_orbit_button_1() (ROM_GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_2) == GPIO_PIN_2)
+#define read_orbit_button_2() (ROM_GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_0) == GPIO_PIN_0)
+
 // Menu structures.
 struct menu_item;
 typedef struct menu_item (*get_child_menu_func)(struct menu_item *self, int *length);

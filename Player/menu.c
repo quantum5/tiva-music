@@ -27,20 +27,32 @@ void show_menu(menu_item *menu, int size) {
 		// Paint menu.
 		int i = index - 1;
 		if (i < 0) i = 0;
-		if (i + 3 > size) i = size - 3 >= 0 ? size - 3 : 0;
+		if (i + 4 > size) i = size - 4 >= 0 ? size - 4 : 0;
 
+		OrbitOledClearBuffer();
 		for (int k = 0; i < size && k < 4; ++i, ++k) {
-			if (i == index)
-				OrbitOledSetRC(k, 0), OrbitOledPutChar('>');
-			OrbitOledSetRC(k, 1);
+			OrbitOledSetRC(k, 0);
+			OrbitOledPutChar(i == index ? '>' : ' ');
 			OrbitOledPutString(menu[i].name);
 		}
 		OrbitOledUpdate();
+
+		char status;
+		while (!(status = read_orbit_button_1() << 1 | read_orbit_button_2()));
+		if (status & 1) {
+			while (read_orbit_button_2());
+			if (index > 0) --index;
+		} else {
+			while (read_orbit_button_1());
+			if (index + 1 < size) ++index;
+		}
 	}
 }
 
 void menu_test(void) {
 	OrbitOledInit();
 	OrbitOledSetCharUpdate(0);
+	initialize_orbit_button_1();
+	initialize_orbit_button_2();
 	show_menu(top_level_menu, ARRAY_SIZE(top_level_menu));
 }
