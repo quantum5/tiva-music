@@ -441,8 +441,8 @@ OrbitOledUpdate()
 void
 OrbitOledPutBuffer(int cb, char * rgbTx)
 	{
-	int				ib;
-	unsigned long	bTmp;
+	int			ib;
+	uint32_t	bTmp;
 
 	/* Bring the slave select line low
 	*/
@@ -491,7 +491,7 @@ OrbitOledPutBuffer(int cb, char * rgbTx)
 char
 Ssi3PutByte(char bVal)
 	{
-	unsigned long	bRx;
+	uint32_t	bRx;
 
 	/* Bring the slave select line low
 	*/

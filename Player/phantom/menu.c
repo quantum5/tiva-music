@@ -10,7 +10,7 @@ extern const sw_song musicofthenight;
 const menu_item phantom_menu[1] = {
 	{
 		"The Music of the Night",
-		&musicofthenight,
+		(void*) &musicofthenight,
 		MENU_TYPE_SW_SONG,
 		NULL,
 	},

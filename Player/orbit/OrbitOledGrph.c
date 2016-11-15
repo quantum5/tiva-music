@@ -618,7 +618,6 @@ OrbitOledGetBmp(int dxco, int dyco, char * pbBits)
 	int		xcoCur;
 	int		bnAlign;
 	char	mskEnd;
-	char	bTmp;
 
 	/* Set up the four sides of the source rectangle.
 	*/
@@ -664,8 +663,6 @@ OrbitOledGetBmp(int dxco, int dyco, char * pbBits)
 		}
 		else {
 			while (xcoCur < xcoRight) {
-				bTmp = *pbDspCur;
-				bTmp = *(pbDspCur+ccolOledMax);
 				*pbBmpCur = ((*pbDspCur >> bnAlign) |
 							((*(pbDspCur+ccolOledMax)) << (8-bnAlign))) & mskEnd;
 				xcoCur += 1;

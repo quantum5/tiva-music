@@ -20,6 +20,7 @@ typedef struct note {
 } note;
 void sw_play(const note *notes, int size);
 void sw_wait(void);
+void sw_stop(void);
 extern volatile bool sw_playing; // Mutate at your own peril.
 
 // Low level PWM API, unstable interface.
@@ -74,6 +75,7 @@ typedef struct menu_item {
 	const struct menu_item *children;
 	uint32_t child_count;
 } menu_item;
+void show_menu(const menu_item *menu, int size, const char *title);
 
 // Playing.
 void play_sw_song(const sw_song *song, const char *title);
