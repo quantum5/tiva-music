@@ -17,7 +17,7 @@ class Parser(object):
                          .replace('\\b', '\b')
                          .replace('\\r', '\r'))
         elif head == 'V':
-            self.dynamic(data, 0)
+            self.dynamic(data)
         else:
             self.play(ohead, data)
 

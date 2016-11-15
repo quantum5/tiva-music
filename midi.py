@@ -184,6 +184,9 @@ class Player(Parser):
         if not self.handle:
             raise RuntimeError("Can't find MIDI device")
 
+    def __del__(self):
+        midiOutClose(self.handle)
+
     def instrument(self, data):
         try:
             id = int(data, 0)
