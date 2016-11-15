@@ -82,6 +82,8 @@ static bool pcm_replay(void) {
 	return 1;
 }
 
+void menu_test(void);
+
 int main(void) {
 	printf("System start. Clock rate is %d Hz.\n", ROM_SysCtlClockGet());
 
@@ -105,10 +107,18 @@ int main(void) {
 	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
 	while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1));
 
+	// Gene Apperson, you need to enable the damn peripheral if you are using it in your library...
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD));
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE));
+
 	// Make PWM clock run as fast as CPU clock.
 	ROM_SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
 
 	//printf("USB Host: %d\n", usb_ms_init());
+	menu_test();
+
 
     pwm_setup();
     pwm_finish_register(pcm_replay);
