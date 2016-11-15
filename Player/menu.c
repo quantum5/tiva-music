@@ -64,14 +64,3 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 		}
 	}
 }
-
-void menu_test(void) {
-	OrbitOledInit();
-	OrbitOledSetCharUpdate(0);
-	initialize_orbit_BTN1();
-	initialize_orbit_BTN2();
-	initialize_tiva_SW1();
-	initialize_tiva_SW2();
-	while (true)
-		show_menu(top_level_menu, ARRAY_SIZE(top_level_menu), "Music Player");
-}
