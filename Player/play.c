@@ -17,12 +17,18 @@ void play_sw_song(const sw_song *song, const char *title) {
 
     char buffer[17];
     int length = strlen(title);
-    int shift = 0, max_shift = length + 15;
+    int shift = 0, max_shift = length + 3;
 
     while (sw_playing) {
     	if (length > 16) {
-    		for (int i = 0; i < 16; ++i)
-    			buffer[i] = shift + i < length ? title[shift + i] : (shift + i > length + 2) ? title[shift+i-length-3] : ' ';
+    		for (int i = 0; i < 16; ++i) {
+    			if (shift + i < length)
+    				buffer[i] = title[shift+i];
+    			else if (shift + i > length + 2)
+    				buffer[i] = title[shift+i-3 - length];
+    			else
+    				buffer[i] = ' ';
+    		}
     		buffer[16] = 0;
 			shift = (shift + 1) % max_shift;
     	} else strcpy(buffer, title);
