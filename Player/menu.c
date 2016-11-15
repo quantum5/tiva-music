@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>
 #include "inc/tm4c123gh6pm.h"
 #include "inc/hw_memmap.h"
 #include "driverlib/gpio.h"
@@ -21,9 +22,31 @@ const menu_item top_level_menu[] = {
 		{"Sixth Item", NULL, 0, NULL, 0},
 };
 
+int scroll_text(char *buffer, int size, const char *text, int len, int shift) {
+	if (len > size) {
+		for (int i = 0; i < size; ++i) {
+			if (shift + i < len)
+				buffer[i] = text[shift+i];
+			else if (shift + i > len + 2)
+				buffer[i] = text[shift+i-3-len];
+			else
+				buffer[i] = ' ';
+		}
+		buffer[size] = 0;
+		shift = (shift + 1) % (len + 3);
+	} else strcpy(buffer, text);
+	return shift;
+}
+
 
 void show_menu(const menu_item *menu, int size, const char *title) {
-	int index = 0;
+	int index = 0, len_title = strlen(title), title_shift = 0;
+	uint8_t len[size], shift[size];
+	char buffer[17];
+
+	for (int i = 0; i < size; ++i)
+		len[i] = strlen(menu[i].name);
+
 	while (true) {
 		// Paint menu.
 		int i = index - 1;
@@ -32,16 +55,21 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 
 		OrbitOledClearBuffer();
 		OrbitOledSetRC(0, 0);
-		OrbitOledPutString(title);
+		title_shift = scroll_text(buffer, 16, title, len_title, title_shift);
+		OrbitOledPutString(buffer);
 		for (int k = 1; i < size && k < 4; ++i, ++k) {
 			OrbitOledSetRC(k, 0);
 			OrbitOledPutChar(i == index ? '>' : ' ');
-			OrbitOledPutString(menu[i].name);
+			int temp = shift[i];
+			shift[i] = scroll_text(buffer, 15, menu[i].name, len[i], shift[i]);
+			OrbitOledPutString(buffer);
 		}
 		OrbitOledUpdate();
 
 		char status;
-		while (!(status = (read_tiva_SW1() << 3) | (read_tiva_SW2() << 2) | (read_orbit_BTN1() << 1) | read_orbit_BTN2()));
+		for (int i = 0; i < 131072 && !(status = (
+				(read_tiva_SW1() << 3) | (read_tiva_SW2() << 2) |
+				(read_orbit_BTN1() << 1) | read_orbit_BTN2())); ++i);
 		if (status & 4) {
 			while (read_tiva_SW2());
 			printf("Selected: %s\n", menu[index].name);
@@ -49,6 +77,7 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 				show_menu(menu[index].children, menu[index].child_count, menu[index].name);
 			} else switch (menu[index].modifiers & MENU_TYPE_MASK) {
 				case MENU_TYPE_SW_SONG:
+					printf("Play song: %s\n", menu[index].name);
 					play_sw_song(menu[index].data, menu[index].name);
 					break;
 			}

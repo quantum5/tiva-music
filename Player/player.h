@@ -75,6 +75,8 @@ typedef struct menu_item {
 	const struct menu_item *children;
 	uint32_t child_count;
 } menu_item;
+
+int scroll_text(char *buffer, int size, const char *text, int len, int shift);
 void show_menu(const menu_item *menu, int size, const char *title);
 
 // Playing.
