@@ -287,7 +287,7 @@ OrbitOledPutChar(char ch)
 */
 
 void
-OrbitOledPutString(char * sz)
+OrbitOledPutString(const char * sz)
 	{
 
 	while (*sz != '\0') {

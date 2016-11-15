@@ -119,11 +119,10 @@ int main(void) {
 	//printf("USB Host: %d\n", usb_ms_init());
 	menu_test();
 
-
-    pwm_setup();
+    /*pwm_setup();
     pwm_finish_register(pcm_replay);
     pwm_play(pcm_data, sizeof pcm_data, 8000);
-    while (1);
+    while (1);*/
 
     // Set PF2 pin to output.
     ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);

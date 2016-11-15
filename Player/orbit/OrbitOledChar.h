@@ -55,7 +55,7 @@ int		OrbitOledDefUserChar(char ch, char * pbDef);
 void	OrbitOledSetCharUpdate(int f);
 int		OrbitOledGetCharUpdate();
 void	OrbitOledPutChar(char ch);
-void	OrbitOledPutString(char * sz);
+void	OrbitOledPutString(const char * sz);
 
 /* ------------------------------------------------------------ */
 
