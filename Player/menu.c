@@ -21,16 +21,18 @@ menu_item top_level_menu[] = {
 };
 
 
-void show_menu(menu_item *menu, int size) {
+void show_menu(menu_item *menu, int size, const char *title) {
 	int index = 3;
 	while (true) {
 		// Paint menu.
 		int i = index - 1;
 		if (i < 0) i = 0;
-		if (i + 4 > size) i = size - 4 >= 0 ? size - 4 : 0;
+		if (i + 3 > size) i = size - 3 >= 0 ? size - 3 : 0;
 
 		OrbitOledClearBuffer();
-		for (int k = 0; i < size && k < 4; ++i, ++k) {
+		OrbitOledSetRC(0, 0);
+		OrbitOledPutString(title);
+		for (int k = 1; i < size && k < 4; ++i, ++k) {
 			OrbitOledSetRC(k, 0);
 			OrbitOledPutChar(i == index ? '>' : ' ');
 			OrbitOledPutString(menu[i].name);
@@ -38,10 +40,13 @@ void show_menu(menu_item *menu, int size) {
 		OrbitOledUpdate();
 
 		char status;
-		while (!(status = (read_tiva_SW2() << 2) | (read_orbit_BTN1() << 1) | read_orbit_BTN2()));
+		while (!(status = (read_tiva_SW1() << 3) | (read_tiva_SW2() << 2) | (read_orbit_BTN1() << 1) | read_orbit_BTN2()));
 		if (status & 4) {
 			while (read_tiva_SW2());
 			printf("Selected: %s\n", menu[index].name);
+		} else if (status & 8) {
+			while (read_tiva_SW1());
+			return;
 		} else if (status & 1) {
 			while (read_orbit_BTN2());
 			if (index > 0) --index;
@@ -59,5 +64,6 @@ void menu_test(void) {
 	initialize_orbit_BTN2();
 	initialize_tiva_SW1();
 	initialize_tiva_SW2();
-	show_menu(top_level_menu, ARRAY_SIZE(top_level_menu));
+	while (true)
+		show_menu(top_level_menu, ARRAY_SIZE(top_level_menu), "Music Player");
 }
