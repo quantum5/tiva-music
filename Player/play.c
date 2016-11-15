@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>
 #include "inc/tm4c123gh6pm.h"
 #include "inc/hw_memmap.h"
 #include "driverlib/gpio.h"
@@ -14,10 +15,21 @@
 void play_sw_song(const sw_song *song, const char *title) {
     sw_play(song->notes, song->notes_len);
 
+    char buffer[17];
+    int length = strlen(title);
+    int shift = 0, max_shift = length + 15;
+
     while (sw_playing) {
+    	if (length > 16) {
+    		for (int i = 0; i < 16; ++i)
+    			buffer[i] = shift + i < length ? title[shift + i] : (shift + i > length + 2) ? title[shift+i-length-3] : ' ';
+    		buffer[16] = 0;
+			shift = (shift + 1) % max_shift;
+    	} else strcpy(buffer, title);
+
 		OrbitOledClearBuffer();
 		OrbitOledSetRC(0, 0);
-		OrbitOledPutString(title);
+		OrbitOledPutString(buffer);
 		OrbitOledUpdate();
 
 		int status;
