@@ -9,8 +9,11 @@
 #include "driverlib/sysctl.h"
 
 #include "player.h"
+#include "orbit/OrbitOled.h"
+#include "orbit/OrbitOledChar.h"
 
 extern const unsigned char pcm_data[179466];
+extern const menu_item top_level_menu[6];
 
 static bool pcm_replay(void) {
 	pwm_swap_buffer(pcm_data, sizeof pcm_data);
