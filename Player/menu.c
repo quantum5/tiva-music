@@ -8,21 +8,22 @@
 #include "driverlib/rom.h"
 
 #include "player.h"
+#include "menu.h"
 #include "orbit/OrbitOled.h"
 #include "orbit/OrbitOledChar.h"
 
-menu_item top_level_menu[] = {
-		{"First Item", NULL, NULL, NULL},
-		{"Second Item", NULL, NULL, NULL},
-		{"Third Item", NULL, NULL, NULL},
-		{"Fourth Item", NULL, NULL, NULL},
-		{"Fifth Item", NULL, NULL, NULL},
-		{"Sixth Item", NULL, NULL, NULL},
+const menu_item top_level_menu[] = {
+		{"The Phantom of the Opera", NULL, 0, phantom_menu, ARRAY_SIZE(phantom_menu)},
+		{"Second Item", NULL, 0, NULL, 0},
+		{"Third Item", NULL, 0, NULL, 0},
+		{"Fourth Item", NULL, 0, NULL, 0},
+		{"Fifth Item", NULL, 0, NULL, 0},
+		{"Sixth Item", NULL, 0, NULL, 0},
 };
 
 
-void show_menu(menu_item *menu, int size, const char *title) {
-	int index = 3;
+void show_menu(const menu_item *menu, int size, const char *title) {
+	int index = 0;
 	while (true) {
 		// Paint menu.
 		int i = index - 1;
@@ -44,6 +45,13 @@ void show_menu(menu_item *menu, int size, const char *title) {
 		if (status & 4) {
 			while (read_tiva_SW2());
 			printf("Selected: %s\n", menu[index].name);
+			if (menu[index].children) {
+				show_menu(menu[index].children, menu[index].child_count, menu[index].name);
+			} else switch (menu[index].modifiers & MENU_TYPE_MASK) {
+				case MENU_TYPE_SW_SONG:
+					play_sw_song(menu[index].data, menu[index].name);
+					break;
+			}
 		} else if (status & 8) {
 			while (read_tiva_SW1());
 			return;

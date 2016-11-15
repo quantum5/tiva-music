@@ -12,6 +12,7 @@ void pwm_setup(void);
 void pwm_play(const unsigned char *pcm, int size, int sample_rate);
 void pwm_swap_buffer(const unsigned char *pcm, int size);
 void pwm_wait(void);
+extern volatile bool pwm_playing; // Mutate at your own peril.
 
 // Background square playback functions.
 typedef struct note {
@@ -19,8 +20,7 @@ typedef struct note {
 } note;
 void sw_play(const note *notes, int size);
 void sw_wait(void);
-
-extern volatile bool pwm_playing; // Mutate at your own peril.
+extern volatile bool sw_playing; // Mutate at your own peril.
 
 // Low level PWM API, unstable interface.
 extern const unsigned char *pwm_sample;
@@ -45,17 +45,38 @@ void initialize_tiva_button(uint32_t base, uint8_t pin);
 #define read_tiva_SW1() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4) != GPIO_PIN_4)
 #define read_tiva_SW2() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0) != GPIO_PIN_0)
 
+// Song data structures.
+typedef struct lyric_line {
+	int position;
+	const char *line;
+} lyric_line;
+
+typedef struct sw_song {
+	const struct note *notes;
+	int notes_len;
+	const struct lyric_line *lyrics;
+	int lyrics_len;
+} sw_song;
+
 // Menu structures.
+#define MENU_TYPE_MASK		0x0000000F
+#define MENU_TYPE_SW_SONG	0x00000001
+#define MENU_TYPE_PCM_SONG	0x00000002
+#define MENU_CHILD_IS_FUNC 	0x00010000
+
 struct menu_item;
 typedef struct menu_item (*get_child_menu_func)(struct menu_item *self, int *length);
-typedef void (*menu_item_suicide_func)(struct menu_item *self);
 typedef void (*menu_item_play_func)(struct menu_item *data);
 typedef struct menu_item {
 	const char *name;
 	void *data;
-	get_child_menu_func get_children;
-	menu_item_suicide_func release;
+	uint32_t modifiers;
+	const struct menu_item *children;
+	uint32_t child_count;
 } menu_item;
+
+// Playing.
+void play_sw_song(const sw_song *song, const char *title);
 
 // More sane alternatives to Gene Apperson.
 #define OrbitOledSetRC(row, column) OrbitOledSetCursor(column, row)

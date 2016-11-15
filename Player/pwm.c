@@ -105,6 +105,12 @@ void sw_toggle_output(void) {
 	}
 }
 
+void sw_stop(void) {
+	ROM_TimerDisable(TIMER0_BASE, TIMER_A);
+	sw_playing = false;
+	GPIO_PORTF_DATA_R &= ~GPIO_PIN_2;
+}
+
 void sw_wait(void) {
 	while (sw_playing);
 }

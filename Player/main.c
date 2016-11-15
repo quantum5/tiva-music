@@ -122,9 +122,9 @@ int main(void) {
 	GPIO_PORTF_LOCK_R = 0;
 
 	//printf("USB Host: %d\n", usb_ms_init());
-	//menu_test();
-
     pwm_setup();
+	menu_test();
+
     /*pwm_finish_register(pcm_replay);
     pwm_play(pcm_data, sizeof pcm_data, 8000);*/
     sw_play(song, ARRAY_SIZE(song));
