@@ -38,12 +38,15 @@ void show_menu(menu_item *menu, int size) {
 		OrbitOledUpdate();
 
 		char status;
-		while (!(status = read_orbit_button_1() << 1 | read_orbit_button_2()));
-		if (status & 1) {
-			while (read_orbit_button_2());
+		while (!(status = (read_tiva_SW2() << 2) | (read_orbit_BTN1() << 1) | read_orbit_BTN2()));
+		if (status & 4) {
+			while (read_tiva_SW2());
+			printf("Selected: %s\n", menu[index].name);
+		} else if (status & 1) {
+			while (read_orbit_BTN2());
 			if (index > 0) --index;
-		} else {
-			while (read_orbit_button_1());
+		} else if (status & 2) {
+			while (read_orbit_BTN1());
 			if (index + 1 < size) ++index;
 		}
 	}
@@ -52,7 +55,9 @@ void show_menu(menu_item *menu, int size) {
 void menu_test(void) {
 	OrbitOledInit();
 	OrbitOledSetCharUpdate(0);
-	initialize_orbit_button_1();
-	initialize_orbit_button_2();
+	initialize_orbit_BTN1();
+	initialize_orbit_BTN2();
+	initialize_tiva_SW1();
+	initialize_tiva_SW2();
 	show_menu(top_level_menu, ARRAY_SIZE(top_level_menu));
 }

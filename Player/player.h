@@ -28,10 +28,15 @@ bool usb_ms_init(void);
 
 // Orbit booster pack.
 void initialize_orbit_button(uint32_t base, uint8_t pin);
-#define initialize_orbit_button_1() initialize_orbit_button(GPIO_PORTD_BASE, GPIO_PIN_2)
-#define initialize_orbit_button_2() initialize_orbit_button(GPIO_PORTE_BASE, GPIO_PIN_0)
-#define read_orbit_button_1() (ROM_GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_2) == GPIO_PIN_2)
-#define read_orbit_button_2() (ROM_GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_0) == GPIO_PIN_0)
+void initialize_tiva_button(uint32_t base, uint8_t pin);
+#define initialize_orbit_BTN1() initialize_orbit_button(GPIO_PORTD_BASE, GPIO_PIN_2)
+#define initialize_orbit_BTN2() initialize_orbit_button(GPIO_PORTE_BASE, GPIO_PIN_0)
+#define initialize_tiva_SW1() initialize_tiva_button(GPIO_PORTF_BASE, GPIO_PIN_4)
+#define initialize_tiva_SW2() initialize_tiva_button(GPIO_PORTF_BASE, GPIO_PIN_0)
+#define read_orbit_BTN1() (ROM_GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_2) == GPIO_PIN_2)
+#define read_orbit_BTN2() (ROM_GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_0) == GPIO_PIN_0)
+#define read_tiva_SW1() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4) != GPIO_PIN_4)
+#define read_tiva_SW2() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0) != GPIO_PIN_0)
 
 // Menu structures.
 struct menu_item;
