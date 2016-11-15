@@ -1,0 +1,445 @@
+Instrument: Piano
+Speed: 4000
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 4
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 8
+Db5: 8
+Bb4: 8
+F4: 8
+Ab4: 2
+
+Eb4: 2
+F4: 2
+
+
+
+
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 8
+Db5: 8
+Bb4: 8
+F4: 8
+Ab4: 4
+
+0: 8
+F4: 8
+F4: 8
+Eb4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Ab4: 8
+F4: 8
+Eb4: 8
+Db4: 2
+
+
+0: 4
+Speed: 3600
+
+
+F4: 8
+Ab4: 8
+D#5: 4
+C#5: 8
+B4: 8
+A#4: 8
+G#4: 8
+F#4: 8
+G#4: 8
+G#4: 4
+F#4: 4
+E4: 4
+
+G#4: 8
+B4: 8
+E5: 4
+D#5: 8+
+C#5: 16
+C#5: 8
+B4: 8
+B4: 8
+Bb4: 8
+Bb4: 2
+
+Eb5: 8
+Eb5: 8
+Eb5: 4
+; rall.
+Speed: 4000
+Db5: 8
+C5: 8
+Speed: 4500
+Bb4: 8
+Ab4: 8
+Speed: 5000
+Bb4: 8
+Ab4: 8
+Ab5: 1
+
+0: 4
+C5: 8
+C5: 8
+; rit.
+Speed: 5500
+C5: 4
+C5: 8
+C5: 8
+C5: 8
+Bb4: 8
+C5: 8
+Db5: 8
+C5: 2+
+0: 4
+
+
+
+; a tempo
+Speed: 4000
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 8
+Db5: 8
+Bb4: 8
+F4: 8
+Ab4: 4
+
+0: 8
+F4: 8
+F4: 8
+Eb4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Ab4: 8
+F4: 8
+Eb4: 8
+Db4: 2
+
+
+0: 4
+Speed: 3600
+
+
+C#5: 8
+C#5: 8
+D#5: 4
+C#5: 8
+B4: 8
+A#4: 8
+G#4: 8
+F#4: 8
+G#4: 8
+G#4: 4
+F#4: 4
+E4: 4
+
+G#4: 8
+B4: 8
+E5: 4
+D#5: 8+
+C#5: 16
+C#5: 8
+B4: 8
+B4: 8
+Bb4: 8
+Bb4: 2
+
+Eb5: 8
+Eb5: 8
+Eb5: 4
+; rall.
+Speed: 4000
+Db5: 8
+C5: 8
+Speed: 4500
+Bb4: 8
+Ab4: 8
+Speed: 5000
+Bb4: 8
+Ab4: 8
+Ab5: 1+
+
+0: 4
+C5: 8
+C5: 8
+C5: 4
+C5: 4
+; rit.
+Speed: 5500
+C5: 8
+Bb4: 8
+C5: 8
+Db5: 8
+C5: 2+
+0: 4
+
+
+
+; a tempo
+Speed: 4000
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 8
+Db5: 8
+Bb4: 8
+F4: 8
+Ab4: 4
+
+0: 8
+F4: 8
+F4: 8
+Eb4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Ab4: 8
+F4: 8
+Eb4: 8
+Db4: 2
+
+
+
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+F4: 4
+Ab3: 4
+Eb4: 4
+Ab3: 4
+
+Db4: 8
+Eb4: 8
+F4: 8
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+Db5: 8
+Db5: 8
+Eb5: 4
+Db5: 4
+0: 8
+
+
+
+Bb4: 8
+Db5: 8
+Speed: 4200
+Db5: 8
+Db5: 8
+Speed: 4500
+Eb5: 8
+Db5: 8
+Speed: 4700
+Bb4: 8
+F4: 8
+Speed: 5000
+Ab4: 4
+0: 4
+
+F4: 8
+Speed: 5500
+Eb4: 8
+Eb4: 8
+Speed: 6000
+F4: 8
+Gb4: 8
+Speed: 6500
+Ab4: 8
+F4: 8
+Speed: 7000
+Eb4: 8+
+0: 8
+Speed: 15000
+Db5: 1+
