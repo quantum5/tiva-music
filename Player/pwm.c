@@ -79,11 +79,19 @@ int sw_note_total, sw_note_oscis;
 
 static void sw_set_note(const note *note) {
 	printf("Playing %d Hz tone for %d ms\n", note->freq, note->len);
-	int cycles = clock_rate / note->freq / 2;
-	GPIO_PORTF_DATA_R |= GPIO_PIN_2;
-	sw_note_oscis = 0;
-	sw_note_total = note->len * (clock_rate / 1000) / cycles;
-	ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, cycles);
+	if (note->freq) {
+		int cycles = clock_rate / note->freq / 2;
+		GPIO_PORTF_DATA_R |= GPIO_PIN_2;
+		sw_note_oscis = 0;
+		sw_note_total = note->len * (clock_rate / 1000) / cycles;
+		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, cycles);
+	} else {
+		sw_note_total = sw_note_oscis = 0;
+		GPIO_PORTF_DATA_R &= ~GPIO_PIN_2;
+		printf("Resting for %d ticks\n", clock_rate / 1000 * note->len);
+		ROM_TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 1000 * note->len);
+	}
 }
 
 void sw_play(const note *notes, int size) {
@@ -106,11 +114,12 @@ void sw_toggle_output(void) {
 			ROM_TimerDisable(TIMER0_BASE, TIMER_A);
 			sw_playing = false;
 		}
-	}
-	GPIO_PORTF_DATA_R ^= GPIO_PIN_2;
-	if (++sw_note_oscis >= sw_note_total) {
-		sw_note_total = 0;
-		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 500);
+	} else {
+		GPIO_PORTF_DATA_R ^= GPIO_PIN_2;
+		if (++sw_note_oscis >= sw_note_total) {
+			sw_note_total = 0;
+			ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 500);
+		}
 	}
 }
 
