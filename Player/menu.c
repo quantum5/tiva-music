@@ -60,7 +60,6 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 		for (int k = 1; i < size && k < 4; ++i, ++k) {
 			OrbitOledSetRC(k, 0);
 			OrbitOledPutChar(i == index ? '>' : ' ');
-			int temp = shift[i];
 			shift[i] = scroll_text(buffer, 15, menu[i].name, len[i], shift[i]);
 			OrbitOledPutString(buffer);
 		}
