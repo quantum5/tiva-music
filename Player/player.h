@@ -22,7 +22,7 @@ typedef struct note {
 void sw_play(const note *notes, int size);
 void sw_wait(void);
 void sw_stop(void);
-extern volatile int sw_note_num;
+extern volatile uint32_t sw_elapsed;
 extern volatile bool sw_playing; // Mutate at your own peril.
 
 // Low level PWM API, unstable interface.
@@ -94,5 +94,7 @@ void play_pcm_fragment(const pcm_fragment *data, const char *title);
 // More sane alternatives to Gene Apperson.
 #define OrbitOledSetRC(row, column) OrbitOledSetCursor(column, row)
 #define OrbitOledGetRC(row, column) OrbitOledGetCursor(column, row)
+#define OrbitOledMoveRC(row, column) OrbitOledMoveTo(column, row)
+#define OrbitOledFillRectRC(row, column) OrbitOledFillRect(column, row)
 
 #endif /* PLAYER_H_ */

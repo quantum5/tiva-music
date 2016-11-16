@@ -11,13 +11,23 @@
 #include "player.h"
 #include "orbit/OrbitOled.h"
 #include "orbit/OrbitOledChar.h"
+#include "orbit/OrbitOledGrph.h"
 
 void play_sw_song(const sw_song *song, const char *title) {
     sw_play(song->notes, song->notes_len);
 
     char buffer[17];
     int length = strlen(title);
+    int total_len = 0;
     int shift = 0;
+
+    for (int i = 0; i < song->notes_len; ++i)
+    	total_len += song->notes[i].len;
+
+    char fill[8] = {0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA};
+	OrbitOledSetDrawColor(1);
+	OrbitOledSetDrawMode(modOledSet);
+	OrbitOledSetFillPattern(fill);
 
     while (sw_playing) {
     	shift = scroll_text(buffer, 16, title, length, shift);
@@ -25,6 +35,8 @@ void play_sw_song(const sw_song *song, const char *title) {
 		OrbitOledClearBuffer();
 		OrbitOledSetRC(0, 0);
 		OrbitOledPutString(buffer);
+		OrbitOledMoveRC(8, 0);
+		OrbitOledFillRectRC(15, 128 * sw_elapsed / total_len);
 		OrbitOledUpdate();
 
 		int status;
