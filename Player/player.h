@@ -15,16 +15,6 @@ void pwm_wait(void);
 void pwm_stop(void);
 extern volatile bool pwm_playing; // Mutate at your own peril.
 
-// Background square playback functions.
-typedef struct note {
-	uint16_t freq, len;
-} note;
-void sw_play(const note *notes, int size);
-void sw_wait(void);
-void sw_stop(void);
-extern volatile uint32_t sw_elapsed;
-extern volatile bool sw_playing; // Mutate at your own peril.
-
 // Low level PWM API, unstable interface.
 extern const unsigned char *pwm_sample;
 extern const unsigned char *pwm_sample_end;
@@ -32,6 +22,20 @@ extern const unsigned char *pwm_sample_end;
 // PWM finish callback, return 1 to continue playback.
 typedef bool (*pwm_finish_fn)(void);
 void pwm_finish_register(pwm_finish_fn callback);
+
+// Background square playback functions.
+typedef struct note {
+	uint16_t freq, len;
+} note;
+void sw_play(const note *notes, int size);
+void sw_wait(void);
+void sw_stop(void);
+extern volatile uint32_t note_num;
+extern volatile uint32_t sw_elapsed;
+extern volatile bool sw_playing; // Mutate at your own peril.
+
+typedef void (*sw_next_note_fn)(uint32_t note_num, const note *note);
+void sw_next_note_register(sw_next_note_fn callback);
 
 // USB access functions.
 bool usb_ms_init(void);

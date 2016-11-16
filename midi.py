@@ -176,7 +176,6 @@ dynamics = {'m': 0x40, 'mf': 0x48, 'f': 0x50, 'ff': 0x60, 'fff': 0x70, 'mp': 0x3
 class Player(Parser):
     def __init__(self, *args, **kwargs):
         super(Player, self).__init__(*args, **kwargs)
-        self.speed = 2000
         self.force = 0x40
 
         self.handle = c_void_p()
@@ -200,9 +199,6 @@ class Player(Parser):
         else:
             raise ValueError('Instrument %s out of range' % data)
 
-    def tempo(self, new):
-        self.speed = new
-
     def say(self, new):
         self.write(new)
 
@@ -219,25 +215,14 @@ class Player(Parser):
         else:
             raise ValueError('Dynamic %s out of range' % dynamic)
 
-    def play(self, head, data):
-        try:
-            length = float(data.rstrip('+'))
-        except ValueError:
-            print data, 'not known'
-            return
-        length = self.speed / length
-
-        if data.endswith('+'):
-            # Dotted notes
-            length *= 1.5
-
-        if head.startswith('0'):
+    def play(self, note, length):
+        if note.startswith('0'):
             time.sleep(length/1000.)
             return
 
-        self.write((head, length))
+        self.write((note, length))
 
-        note = self._getnote(head)
+        note = self._getnote(note)
         midiOutShortMsg(self.handle, self.force << 16 | note << 8 | 0x90)
         time.sleep(length / 1000.)
         midiOutShortMsg(self.handle, note << 8 | 0x90)

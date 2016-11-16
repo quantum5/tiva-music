@@ -13,7 +13,24 @@
 #include "orbit/OrbitOledChar.h"
 #include "orbit/OrbitOledGrph.h"
 
+const sw_song *sw_current;
+const char *sw_lyrics[2];
+static int sw_lyric_index;
+
+void play_sw_update_lyrics(uint32_t note_num, const note *note) {
+	if (sw_lyric_index < sw_current->lyrics_len && sw_current->lyrics[sw_lyric_index].position == note_num) {
+		sw_lyrics[0] = sw_lyrics[1];
+		sw_lyrics[1] = sw_current->lyrics[sw_lyric_index].line;
+		++sw_lyric_index;
+	}
+}
+
 void play_sw_song(const sw_song *song, const char *title) {
+	sw_current = song;
+    sw_lyrics[0] = sw_lyrics[1] = NULL;
+    sw_lyric_index = 0;
+    if (song->lyrics_len)
+    	sw_next_note_register(play_sw_update_lyrics);
     sw_play(song->notes, song->notes_len);
 
     char buffer[17];
@@ -36,6 +53,11 @@ void play_sw_song(const sw_song *song, const char *title) {
 		OrbitOledPutString(buffer);
 		OrbitOledMoveRC(8, 0);
 		OrbitOledFillRectRC(15, 128 * sw_elapsed / total_len);
+		for (int i = 0; i < 2; ++i)
+			if (sw_lyrics[i]) {
+				OrbitOledSetRC(2 + i, 0);
+				OrbitOledPutString(sw_lyrics[i]);
+			}
 		OrbitOledUpdate();
 
 		int status;

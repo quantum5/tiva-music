@@ -3,6 +3,7 @@ import traceback
 class Parser(object):
     def __init__(self, file):
         self.file = file
+        self.speed = 2000
 
     def line(self, line):
         ohead, data = line.split(':', 1)
@@ -11,7 +12,7 @@ class Parser(object):
         if head == 'INSTRUMENT':
             self.instrument(data)
         elif head == 'SPEED':
-            self.tempo(float(data))
+            self.speed = float(data)
         elif head == 'L':
             self.say(data.replace('\\n', '\n')
                          .replace('\\b', '\b')
@@ -19,12 +20,20 @@ class Parser(object):
         elif head == 'V':
             self.dynamic(data)
         else:
-            self.play(ohead, data)
+            try:
+                length = float(data.rstrip('+'))
+            except ValueError:
+                print data, 'not known'
+                return
+            length = self.speed / length
+
+            if data.endswith('+'):
+                # Dotted notes
+                length *= 1.5
+
+            self.play(ohead, length)
 
     def instrument(self, new, channel):
-        raise NotImplementedError
-
-    def tempo(self, new):
         raise NotImplementedError
 
     def say(self, new):

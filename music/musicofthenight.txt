@@ -1,40 +1,50 @@
 Instrument: Piano
 Speed: 4000
 
+L: Night time
 F4: 4
 Ab3: 4
+L: sharpens,
 Eb4: 4
 Ab3: 4
 
+L: Heightens each
 Db4: 8
+Eb4: 8
+F4: 8
+L: sensation.
+Gb4: 8
+Eb4: 4
+Ab4: 4
+
+L: Darkness stirs
+F4: 4
+Ab3: 4
+Eb4: 4
+L: and wakes
+Ab3: 4
+
+Db4: 8
+L: imagination.
 Eb4: 8
 F4: 8
 Gb4: 8
 Eb4: 4
 Ab4: 4
 
-F4: 4
-Ab3: 4
-Eb4: 4
-Ab3: 4
-
-Db4: 8
-Eb4: 8
-F4: 8
-Gb4: 8
-Eb4: 4
-Ab4: 4
-
+L: Silently the
 Bb4: 8
 Db5: 8
 Db5: 8
 Db5: 8
+L: senses abandon
 Eb5: 4
 Db5: 8
 C5: 8
 
 Bb4: 8
 Db5: 8
+L: the defenses.
 Db5: 8
 Db5: 8
 Eb5: 4

@@ -72,9 +72,10 @@ void pwm_stop(void) {
 	ROM_PWMOutputState(PWM1_BASE, PWM_OUT_6_BIT, false);
 }
 
+static sw_next_note_fn sw_next_note_callback;
 volatile bool sw_playing;
 const note *sw_note, *sw_note_end;
-volatile uint32_t sw_elapsed;
+volatile uint32_t sw_elapsed, note_num;
 int sw_note_total, sw_note_oscis;
 
 static void sw_set_note(const note *note) {
@@ -93,6 +94,9 @@ static void sw_set_note(const note *note) {
 		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 1000 * note->len);
 	}
 	sw_elapsed += note->len;
+	++note_num;
+	if (sw_next_note_callback)
+		sw_next_note_callback(note_num, note);
 }
 
 void sw_play(const note *notes, int size) {
@@ -100,6 +104,7 @@ void sw_play(const note *notes, int size) {
 	sw_note = notes;
 	sw_note_end = notes + size;
 	sw_elapsed = 0;
+	note_num = 0xFFFFFFFF;
 
 	ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 	sw_set_note(sw_note);
@@ -131,6 +136,10 @@ void sw_stop(void) {
 
 void sw_wait(void) {
 	while (sw_playing);
+}
+
+void sw_next_note_register(sw_next_note_fn callback) {
+	sw_next_note_callback = callback;
 }
 
 void playback_timer_interrupt(void) {
