@@ -24,10 +24,9 @@ void play_sw_song(const sw_song *song, const char *title) {
     for (int i = 0; i < song->notes_len; ++i)
     	total_len += song->notes[i].len;
 
-    char fill[8] = {0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA, 0x55, 0xAA};
 	OrbitOledSetDrawColor(1);
 	OrbitOledSetDrawMode(modOledSet);
-	OrbitOledSetFillPattern(fill);
+	OrbitOledSetFillPattern(OrbitOledGetStdPattern(2));
 
     while (sw_playing) {
     	shift = scroll_text(buffer, 16, title, length, shift);
