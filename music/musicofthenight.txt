@@ -50,6 +50,7 @@ Db5: 8
 Eb5: 4
 Db5: 4
 
+L:
 Bb4: 8
 Db5: 8
 Db5: 8
@@ -66,66 +67,83 @@ F4: 2
 
 
 
-
+L: Slowly, gently,
 F4: 4
 Ab3: 4
 Eb4: 4
 Ab3: 4
 
+L: Night unfurls
 Db4: 8
 Eb4: 8
 F4: 8
+L: its splendour.
 Gb4: 8
 Eb4: 4
 Ab4: 4
 
+L: Grasp it,
 F4: 4
 Ab3: 4
+L: sense it -
 Eb4: 4
 Ab3: 4
 
+L: Tremulous
 Db4: 8
 Eb4: 8
 F4: 8
+L: and tender.
 Gb4: 8
 Eb4: 4
 Ab4: 4
 
+L: Turn your face
 Bb4: 8
 Db5: 8
 Db5: 8
+L: away from the
 Db5: 8
 Eb5: 4
 Db5: 8
 C5: 8
 
+L: garish light
 Bb4: 8
 Db5: 8
 Db5: 8
+L: of day.
 Db5: 8
 Eb5: 4
+L: Turn your
 Db5: 8
 C5: 8
 
+L: thoughts away
 Bb4: 8
 Db5: 8
 Db5: 8
+L: from cold
 Db5: 8
 Eb5: 8
+L: unfeeling light,
 Db5: 8
 Bb4: 8
 F4: 8
 Ab4: 4
 
 0: 8
+L: and listen to
 F4: 8
 F4: 8
 Eb4: 8
 Eb4: 8
+L: the music of
 F4: 8
 Gb4: 8
 Ab4: 8
 F4: 8
+L: the night.
 Eb4: 8
 Db4: 2
 
@@ -134,123 +152,151 @@ Db4: 2
 Speed: 3600
 
 
+L: Close your eyes
 F4: 8
 Ab4: 8
 D#5: 4
+L: and surrender
 C#5: 8
 B4: 8
 A#4: 8
 G#4: 8
+L: to your darkest
 F#4: 8
 G#4: 8
 G#4: 4
 F#4: 4
+L: dreams.
 E4: 4
 
+L: Purge all
 G#4: 8
 B4: 8
+L: thoughts of the
 E5: 4
 D#5: 8+
 C#5: 16
+L: life you knew
 C#5: 8
 B4: 8
 B4: 8
+L: before.
 Bb4: 8
 Bb4: 2
 
+L: Close your eyes
 Eb5: 8
 Eb5: 8
 Eb5: 4
 ; rall.
 Speed: 4000
+L: let your spirit
 Db5: 8
 C5: 8
 Speed: 4500
 Bb4: 8
 Ab4: 8
 Speed: 5000
+L: start to soar!
 Bb4: 8
 Ab4: 8
 Ab5: 1
 
 0: 4
+L: And you'll live
 C5: 8
 C5: 8
 ; rit.
 Speed: 5500
 C5: 4
+L: as you've never
 C5: 8
 C5: 8
 C5: 8
 Bb4: 8
+L: lived before...
 C5: 8
 Db5: 8
 C5: 2+
 0: 4
 
 
-
 ; a tempo
+L: Softly, deftly,
 Speed: 4000
 F4: 4
 Ab3: 4
 Eb4: 4
 Ab3: 4
 
+L: Music shall
 Db4: 8
 Eb4: 8
 F4: 8
+L: caress you.
 Gb4: 8
 Eb4: 4
 Ab4: 4
 
+L: Hear it, feel it
 F4: 4
 Ab3: 4
 Eb4: 4
 Ab3: 4
 
+L: Secretly possess
 Db4: 8
 Eb4: 8
 F4: 8
 Gb4: 8
 Eb4: 4
+L: you.
 Ab4: 4
 
+L: Open up your
 Bb4: 8
 Db5: 8
 Db5: 8
 Db5: 8
 Eb5: 4
+L: mind, let your
 Db5: 8
 C5: 8
 
+L: fantasies unwind
 Bb4: 8
 Db5: 8
 Db5: 8
 Db5: 8
 Eb5: 4
+L: In this darkness
 Db5: 8
 C5: 8
 
 Bb4: 8
 Db5: 8
+L: which you know
 Db5: 8
 Db5: 8
 Eb5: 8
+L: you cannot fight
 Db5: 8
 Bb4: 8
 F4: 8
 Ab4: 4
 
 0: 8
+L: The darkness of
 F4: 8
 F4: 8
 Eb4: 8
 Eb4: 8
+L: the music of
 F4: 8
 Gb4: 8
 Ab4: 8
 F4: 8
+L: the night.
 Eb4: 8
 Db4: 2
 
@@ -259,39 +305,51 @@ Db4: 2
 Speed: 3600
 
 
+L: Let your mind
 C#5: 8
 C#5: 8
 D#5: 4
+L: start a journey
 C#5: 8
 B4: 8
 A#4: 8
 G#4: 8
+L: through a
 F#4: 8
 G#4: 8
+L: strange
 G#4: 4
+L: new world.
 F#4: 4
 E4: 4
 
+L: Leave all
 G#4: 8
 B4: 8
+L: thoughts of the
 E5: 4
 D#5: 8+
 C#5: 16
+L: life you knew
 C#5: 8
 B4: 8
 B4: 8
+L: before.
 Bb4: 8
 Bb4: 2
 
+L: Let your soul
 Eb5: 8
 Eb5: 8
 Eb5: 4
 ; rall.
 Speed: 4000
+L: take you where
 Db5: 8
 C5: 8
 Speed: 4500
 Bb4: 8
+L: you long to be!
 Ab4: 8
 Speed: 5000
 Bb4: 8
@@ -299,12 +357,14 @@ Ab4: 8
 Ab5: 1+
 
 0: 4
+L: Only then can
 C5: 8
 C5: 8
 C5: 4
 C5: 4
 ; rit.
 Speed: 5500
+L: you belong to me
 C5: 8
 Bb4: 8
 C5: 8
@@ -313,74 +373,91 @@ C5: 2+
 0: 4
 
 
-
 ; a tempo
 Speed: 4000
+L: Floating,
 F4: 4
 Ab3: 4
+L: falling,
 Eb4: 4
 Ab3: 4
 
+L: Sweet
 Db4: 8
+L: intoxication.
 Eb4: 8
 F4: 8
 Gb4: 8
 Eb4: 4
 Ab4: 4
 
+L: Touch me,
 F4: 4
 Ab3: 4
+L: trust me,
 Eb4: 4
 Ab3: 4
 
+L: Savour each
 Db4: 8
 Eb4: 8
 F4: 8
+L: sensation.
 Gb4: 8
 Eb4: 4
 Ab4: 4
 
+L: Let the dream
 Bb4: 8
 Db5: 8
 Db5: 8
+L: begin,
 Db5: 8
 Eb5: 4
+L: Let your darker
+Db5: 8
+C5: 8
+
+Bb4: 8
+Db5: 8
+L: side give in.
+Db5: 8
+Db5: 8
+Eb5: 4
+L: To the power of
 Db5: 8
 C5: 8
 
 Bb4: 8
 Db5: 8
 Db5: 8
-Db5: 8
-Eb5: 4
-Db5: 8
-C5: 8
-
-Bb4: 8
-Db5: 8
-Db5: 8
+L: the music that
 Db5: 8
 Eb5: 8
 Db5: 8
 Bb4: 8
+L: I write.
 F4: 8
 Ab4: 4
 
 0: 8
+L: The power of the
 F4: 8
 F4: 8
 Eb4: 8
 Eb4: 8
 F4: 8
+L: music of
 Gb4: 8
 Ab4: 8
 F4: 8
+L: the night...
 Eb4: 8
 Db4: 2
 
 
 
-
+L:
 F4: 4
 Ab3: 4
 Eb4: 4
@@ -423,26 +500,31 @@ Db5: 4
 
 
 
+L: You alone can
 Bb4: 8
 Db5: 8
 Speed: 4200
 Db5: 8
 Db5: 8
 Speed: 4500
+L: make my song
 Eb5: 8
 Db5: 8
 Speed: 4700
 Bb4: 8
+L: take flight,
 F4: 8
 Speed: 5000
 Ab4: 4
 0: 4
 
+L: Help me make
 F4: 8
 Speed: 5500
 Eb4: 8
 Eb4: 8
 Speed: 6000
+L: the music of the
 F4: 8
 Gb4: 8
 Speed: 6500
@@ -452,4 +534,5 @@ Speed: 7000
 Eb4: 8+
 0: 8
 Speed: 15000
+L: night...
 Db5: 1+
