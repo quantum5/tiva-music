@@ -17,8 +17,8 @@
 extern const pcm_fragment sample_pcm;
 const menu_item top_level_menu[] = {
 		{"The Phantom of the Opera", NULL, 0, phantom_menu, ARRAY_SIZE(phantom_menu)},
-		//{"PCM Sample", (void*) &sample_pcm, MENU_TYPE_PCM_SONG, NULL, 0},
-		{"Second Item", NULL, 0, NULL, 0},
+		{"PCM Sample", (void*) &sample_pcm, MENU_TYPE_PCM_SONG, NULL, 0},
+		//{"Second Item", NULL, 0, NULL, 0},
 		{"Third Item", NULL, 0, NULL, 0},
 		{"Fourth Item", NULL, 0, NULL, 0},
 		{"Fifth Item", NULL, 0, NULL, 0},
@@ -44,11 +44,8 @@ int scroll_text(char *buffer, int size, const char *text, int len, int shift) {
 
 void show_menu(const menu_item *menu, int size, const char *title) {
 	int index = 0, len_title = strlen(title), title_shift = 0;
-	uint8_t len[size], shift[size];
+	int len = strlen(menu[0].name), shift = 0;
 	char buffer[17];
-
-	for (int i = 0; i < size; ++i)
-		len[i] = strlen(menu[i].name);
 
 	while (true) {
 		// Paint menu.
@@ -63,7 +60,10 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 		for (int k = 1; i < size && k < 4; ++i, ++k) {
 			OrbitOledSetRC(k, 0);
 			OrbitOledPutChar(i == index ? '>' : ' ');
-			shift[i] = scroll_text(buffer, 15, menu[i].name, len[i], shift[i]);
+			if (i == index)
+				shift = scroll_text(buffer, 15, menu[i].name, len, shift);
+			else
+				strncpy(buffer, menu[i].name, 15), buffer[15] = 0;
 			OrbitOledPutString(buffer);
 		}
 		OrbitOledUpdate();
@@ -90,10 +90,10 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 			return;
 		} else if (status & 1) {
 			while (read_orbit_BTN2());
-			if (index > 0) --index;
+			if (index > 0) --index, len = strlen(menu[index].name);
 		} else if (status & 2) {
 			while (read_orbit_BTN1());
-			if (index + 1 < size) ++index;
+			if (index + 1 < size) ++index, len = strlen(menu[index].name);
 		}
 	}
 }

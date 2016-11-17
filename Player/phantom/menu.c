@@ -5,7 +5,7 @@
 #include "player.h"
 #include "menu.h"
 
-extern const sw_song thinkofme, angelofmusic, phantom, musicofthenight;
+extern const sw_song thinkofme, angelofmusic, phantom, musicofthenight, alliaskofyou, wishingyouweresomehowhereagain, pastthepointofnoreturn;
 
 const menu_item phantom_menu[] = {
 	{
@@ -29,6 +29,24 @@ const menu_item phantom_menu[] = {
 	{
 		"The Music of the Night",
 		(void*) &musicofthenight,
+		MENU_TYPE_SW_SONG,
+		NULL,
+	},
+	{
+		"All I Ask of You",
+		(void*) &alliaskofyou,
+		MENU_TYPE_SW_SONG,
+		NULL,
+	},
+	{
+		"Wishing You Were Somehow Here Again",
+		(void*) &wishingyouweresomehowhereagain,
+		MENU_TYPE_SW_SONG,
+		NULL,
+	},
+	{
+		"Past the Point of No Return",
+		(void*) &pastthepointofnoreturn,
 		MENU_TYPE_SW_SONG,
 		NULL,
 	},
