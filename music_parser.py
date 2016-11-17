@@ -33,13 +33,13 @@ class Parser(object):
 
             self.play(ohead, length)
 
-    def instrument(self, new, channel):
+    def instrument(self, new):
         raise NotImplementedError
 
     def say(self, new):
         raise NotImplementedError
 
-    def dynamic(self, new, channel):
+    def dynamic(self, new):
         raise NotImplementedError
 
     def play(self, head, data):
