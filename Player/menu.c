@@ -13,13 +13,14 @@
 #include "orbit/OrbitOled.h"
 #include "orbit/OrbitOledChar.h"
 
-
+extern const sw_song test;
 extern const pcm_fragment sample_pcm;
+
 const menu_item top_level_menu[] = {
 		{"The Phantom of the Opera", NULL, 0, phantom_menu, ARRAY_SIZE(phantom_menu)},
 		{"PCM Sample", (void*) &sample_pcm, MENU_TYPE_PCM_SONG, NULL, 0},
 		//{"Second Item", NULL, 0, NULL, 0},
-		{"Third Item", NULL, 0, NULL, 0},
+		{"SW Test", (void*) &test, MENU_TYPE_SW_SONG, NULL, 0},
 		{"Fourth Item", NULL, 0, NULL, 0},
 		{"Fifth Item", NULL, 0, NULL, 0},
 		{"Sixth Item", NULL, 0, NULL, 0},

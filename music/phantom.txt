@@ -232,6 +232,7 @@ C5: 1
 
 ; Screams
 Speed: 1500
+Slur: on
 Ab5: 3+
 G5: 8
 Ab5: 8

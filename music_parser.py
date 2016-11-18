@@ -4,6 +4,7 @@ class Parser(object):
     def __init__(self, file):
         self.file = file
         self.speed = 2000
+        self.slur = False
 
     def line(self, line):
         ohead, data = line.split(':', 1)
@@ -13,6 +14,8 @@ class Parser(object):
             self.instrument(data)
         elif head == 'SPEED':
             self.speed = float(data)
+        elif head == 'SLUR':
+            self.slur = data.startswith(('y', 't', 'o'))
         elif head == 'L':
             self.say(data.replace('\\n', '\n')
                          .replace('\\b', '\b')

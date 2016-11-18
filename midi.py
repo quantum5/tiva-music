@@ -226,7 +226,8 @@ class Player(Parser):
         midiOutShortMsg(self.handle, self.force << 16 | note << 8 | 0x90)
         time.sleep(length / 1000.)
         midiOutShortMsg(self.handle, note << 8 | 0x90)
-        time.sleep(0.01)
+        if not self.slur:
+            time.sleep(0.01)
 
     def _getnote(self, note):
         try:

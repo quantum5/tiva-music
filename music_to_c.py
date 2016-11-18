@@ -27,7 +27,7 @@ class MusicToC(Parser):
         if note.startswith('0'):
             self.notes.append((0, length))
         else:
-            self.notes.append((int(table[note]), length))
+            self.notes.append((int(table[note]) | (self.slur and 0x8000), length))
         self.index += 1
 
     def run(self):
