@@ -57,8 +57,7 @@ int main(void) {
 	//printf("USB Host: %d\n", usb_ms_init());
     pwm_setup();
 
-	OrbitOledInit();
-	OrbitOledSetCharUpdate(0);
+	initialize_menu();
 	initialize_orbit_BTN1();
 	initialize_orbit_BTN2();
 	initialize_tiva_SW1();

@@ -90,6 +90,7 @@ typedef struct menu_item {
 
 int scroll_text(char *buffer, int size, const char *text, int len, int shift);
 void show_menu(const menu_item *menu, int size, const char *title);
+void initialize_menu(void);
 
 // Playing.
 void play_sw_song(const sw_song *song, const char *title);
