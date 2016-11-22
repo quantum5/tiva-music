@@ -186,6 +186,11 @@ class Player(Parser):
     def __del__(self):
         midiOutClose(self.handle)
 
+    def slur(self, new):
+        super(Player, self).slur(new)
+        if new:
+            time.sleep(0.01)
+
     def instrument(self, data):
         try:
             id = int(data, 0)
@@ -226,7 +231,7 @@ class Player(Parser):
         midiOutShortMsg(self.handle, self.force << 16 | note << 8 | 0x90)
         time.sleep(length / 1000.)
         midiOutShortMsg(self.handle, note << 8 | 0x90)
-        if not self.slur:
+        if not self.slurred:
             time.sleep(0.01)
 
     def _getnote(self, note):

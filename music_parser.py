@@ -4,7 +4,7 @@ class Parser(object):
     def __init__(self, file):
         self.file = file
         self.speed = 2000
-        self.slur = False
+        self.slurred = False
 
     def line(self, line):
         ohead, data = line.split(':', 1)
@@ -15,7 +15,7 @@ class Parser(object):
         elif head == 'SPEED':
             self.speed = float(data)
         elif head == 'SLUR':
-            self.slur = data.startswith(('y', 't', 'o'))
+            self.slur(data.startswith(('y', 't', 'o')))
         elif head == 'L':
             self.say(data.replace('\\n', '\n')
                          .replace('\\b', '\b')
@@ -35,6 +35,9 @@ class Parser(object):
                 length *= 1.5
 
             self.play(ohead, length)
+
+    def slur(self, new):
+        self.slurred = new
 
     def instrument(self, new):
         raise NotImplementedError
