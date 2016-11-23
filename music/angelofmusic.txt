@@ -1,185 +1,212 @@
 Instrument: Clarinet
 
-Speed: 2500
-
-0: 2
-A4: 4
-C5: 2
-A4: 4
-C5: 2
-D5: 4
-D5: 4+
-D4: 8
-D4: 2
-0: 8
-D5: 2
-G4: 2
-0: 8
-C5: 2
-F4: 2
-0: 8
-B4: 2
-E4: 2
-
 Speed: 3600
 
+L: Bravo, Christine
 D5: 8+
 C5: 16
 Bb4: 8
 C5: 4
+L: das war
 A4: 8
 G4: 4
+L: fantastisch,
 C5: 8
 A4: 8
 F4: 4
+L: So muss Musik
 D5: 8+
 C5: 16
 Bb4: 8
+F4: 4+
+L: klingen!
+D4: 8
+Bb4: 2
+0: 8
+
+L: Ach, ich wüsst'
+D5: 8+
+C5: 16
+Bb4: 8
+L: gern, was du
+C5: 4
+A4: 8
+G4: 4
+L: geheim hältst,
+C5: 8
+A4: 8
+F4: 4
+L: wer lehrt dich
+D5: 8+
+C5: 16
+Bb4: 8
+L: jetzt singen?
 F4: 4+
 D4: 8
 Bb4: 2
 0: 8
 
-D5: 8+
-C5: 16
-Bb4: 8
-C5: 4
-A4: 8
-G4: 4
-C5: 8
-A4: 8
-F4: 4
-D5: 8+
-C5: 16
-Bb4: 8
-F4: 4+
-D4: 8
-Bb4: 2
-0: 8
-
+L: Vater versprach
 Bb4: 8
 A4: 8
 G4: 8
 F4: 8
+L: einen Engel,
 Eb4: 8
 D4: 8
 D4: 8
 G4: 2+
+L: Einst kam im
 G4: 8
 F4: 8
 Eb4: 8
+L: Traum er zu mir.
 Eb4: 8
 D4: 8
 C4: 8
 D4: 2+
 
+L: Ich fühl' es
 Bb4: 8
 A4: 8
 G4: 8
+L: jetzt kanns
 F4: 8
 Eb4: 8
+L: nicht glauben:
 D4: 8
 D4: 8
 G4: 4+
+L: Er ist wirklich
 G4: 8
 A4: 8
 Bb4: 4+
 D5: 4+
+L: hier!
 C5: 2+
 
+L: Er ruft mich
 D5: 8+
 C5: 16
 Bb4: 8
+L: leis' bei meinem
 C5: 4
 A4: 8
 G4: 4
 C5: 8
+L: Namen, bleibt
 A4: 8
 F4: 4
 D5: 8+
+L: bis er mich
 C5: 16
 Bb4: 8
 F4: 4+
+L: geh'n lässt.
 D4: 8
 Bb4: 4
 0: 4
 0: 8
 
+L: Überall spür
 D5: 8+
 C5: 16
 Bb4: 8
 C5: 4
+L: ich seine Nähe,
 A4: 8
 G4: 4
 C5: 8
 A4: 8
 F4: 4
+L: Ihn, der sich
 D5: 8+
 C5: 16
 Bb4: 8
+L: nie seh'n lässt.
 F4: 4+
 D4: 8
 Bb4: 2
 0: 8
 
+L: Du kommst mir
 Bb4: 8
 A4: 8
 G4: 8
+L: vor wie ein
 F4: 8
 Eb4: 8
 D4: 8
+L: Schatten,
 D4: 8
 G4: 2
+L: Für mich bist du
 G4: 8
 F4: 8
 Eb4: 8
 Eb4: 8
+L: ganz weit fort.
 D4: 8
 C4: 8
 D4: 2+
 
+L: Ich hör' dich
 Bb4: 8
 A4: 8
 G4: 8
+L: singen im
 F4: 8
 Eb4: 8
 D4: 8
+L: Dunkeln,
 D4: 8
 G4: 4+
+L: Und versteh
 G4: 8
 A4: 8
 Bb4: 4+
+L: kein Wort.
 D5: 4+
 C5: 2+
 
+L: Engel der Muse,
 F5: 8+
 Eb5: 16
 Db5: 8
 Eb5: 4
 C5: 8
+L: führ und
 Bb4: 4
 Eb5: 8
+L: leit mich,
 C5: 8
 Ab4: 4
+L: Dann wird mein
 F5: 8+
 Eb5: 16
 Db5: 8
+L: Weg klar sein.
 Ab4: 4+
 F4: 8
 Db5: 2+
 
+L: Engel der Muse,
 F5: 8+
 Eb5: 16
 Db5: 8
 Eb5: 4
 C5: 8
+L: mir nur
 Bb4: 4
 Eb5: 8
+L: zeig dich,
 C5: 8
 Ab4: 4
+L: Lass diesen
 F5: 8+
 Eb5: 16
 Db5: 8
+L: Traum wahr sein!
 Ab4: 4+
 F4: 8
 Db5: 2

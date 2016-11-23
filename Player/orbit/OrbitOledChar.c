@@ -171,7 +171,7 @@ OrbitOledGetCursor( int * pxch, int * pych)
 */
 
 int
-OrbitOledDefUserChar(char ch, char * pbDef)
+OrbitOledDefUserChar(char ch, const char * pbDef)
 	{
 	char *	pb;
 	int		ib;

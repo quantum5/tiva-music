@@ -51,7 +51,7 @@ extern "C" {
 
 void	OrbitOledSetCursor(int xch, int ych);
 void	OrbitOledGetCursor(int * pxcy, int * pych);
-int		OrbitOledDefUserChar(char ch, char * pbDef);
+int		OrbitOledDefUserChar(char ch, const char * pbDef);
 void	OrbitOledSetCharUpdate(int f);
 int		OrbitOledGetCharUpdate();
 void	OrbitOledPutChar(char ch);
