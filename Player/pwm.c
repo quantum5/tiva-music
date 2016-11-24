@@ -109,6 +109,13 @@ void sw_play(const note *notes, int size) {
 
 void sw_toggle_output(void) {
 	if (!sw_note_total) {
+		if (read_tiva_SW2()) {
+			ROM_TimerDisable(TIMER0_BASE, TIMER_A);
+			while (read_tiva_SW2());
+			while (!read_tiva_SW1() && !read_tiva_SW2() && !read_orbit_BTN1() && !read_orbit_BTN2());
+			ROM_TimerEnable(TIMER0_BASE, TIMER_A);
+		}
+
 		if (read_orbit_BTN1())
 			for (int i = 0; i < 4; ++i)
 				sw_elapsed += (++sw_note)->len;
