@@ -13,12 +13,13 @@
 #include "orbit/OrbitOled.h"
 #include "orbit/OrbitOledChar.h"
 
-extern const sw_song test, marchofthevolunteers;
+extern const sw_song test, marchofthevolunteers, ocanada;
 extern const pcm_fragment sample_pcm;
 
 const menu_item top_level_menu[] = {
 		{"The Phantom of the Opera", NULL, 0, phantom_menu, ARRAY_SIZE(phantom_menu)},
 		{"March of the Volunteers", (void*) &marchofthevolunteers, MENU_TYPE_SW_SONG, NULL, 0},
+		{"O Canada", (void*) &ocanada, MENU_TYPE_SW_SONG, NULL, 0},
 		{"PCM Sample", (void*) &sample_pcm, MENU_TYPE_PCM_SONG, NULL, 0},
 		{"SW Test", (void*) &test, MENU_TYPE_SW_SONG, NULL, 0},
 		{"Fifth Item", NULL, 0, NULL, 0},
@@ -100,7 +101,7 @@ void show_menu(const menu_item *menu, int size, const char *title) {
 
 static const char custom_chars[] = {
 		0x7c, 0x7e, 0x13, 0x13, 0x3e, 0xfc, 0x80, 0x80,
-		0x41, 0x7f, 0x7f, 0x49, 0x5d, 0xc1, 0x83, 0x80,
+		0x3c, 0x7d, 0x43, 0x42, 0x3c, 0x7c, 0x40, 0x00,
 		0x10, 0x38, 0x6c, 0x46, 0x47, 0x6d, 0x28, 0x00,
 		0x4c, 0x64, 0x66, 0x57, 0x55, 0x4c, 0x64, 0x00,
 		0x46, 0x66, 0x72, 0x5b, 0x4e, 0x66, 0x62, 0x00,

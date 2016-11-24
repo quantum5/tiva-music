@@ -15,20 +15,26 @@
 
 const sw_song *sw_current;
 const char *sw_lyrics[2];
-static int sw_lyric_index;
+static int sw_lyric_index, sw_expect_note;
 
-void play_sw_update_lyrics(uint32_t note_num, const note *note) {
+void play_sw_update_lyrics(int note_num, const note *note) {
+	if (note_num < sw_expect_note) {
+		while (sw_lyric_index >= 0 && sw_current->lyrics[sw_lyric_index].position >= note_num) --sw_lyric_index;
+		++sw_lyric_index;
+	} else if (note_num > sw_expect_note)
+		while (sw_current->lyrics[sw_lyric_index].position < note_num) ++sw_lyric_index;
 	if (sw_lyric_index < sw_current->lyrics_len && sw_current->lyrics[sw_lyric_index].position == note_num) {
 		sw_lyrics[0] = sw_lyrics[1];
 		sw_lyrics[1] = sw_current->lyrics[sw_lyric_index].line;
 		++sw_lyric_index;
 	}
+	sw_expect_note = note_num + 1;
 }
 
 void play_sw_song(const sw_song *song, const char *title) {
 	sw_current = song;
     sw_lyrics[0] = sw_lyrics[1] = NULL;
-    sw_lyric_index = 0;
+    sw_lyric_index = sw_expect_note = 0;
     if (song->lyrics_len)
     	sw_next_note_register(play_sw_update_lyrics);
     sw_play(song->notes, song->notes_len);

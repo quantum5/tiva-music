@@ -26,6 +26,8 @@ int main(void) {
 	printf("Updated clock rate to %u Hz.\n", clock_rate);
 
 	// Enable GPIO block F.
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA));
     ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
     while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
 
@@ -60,6 +62,7 @@ int main(void) {
 	initialize_menu();
 	initialize_orbit_BTN1();
 	initialize_orbit_BTN2();
+	initialize_orbit_SW1();
 	initialize_tiva_SW1();
 	initialize_tiva_SW2();
 

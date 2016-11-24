@@ -74,8 +74,8 @@ void pwm_stop(void) {
 
 static sw_next_note_fn sw_next_note_callback;
 volatile bool sw_playing;
-const note *sw_note, *sw_note_end;
-volatile uint32_t sw_elapsed, note_num;
+const note *sw_note_begin, *sw_note, *sw_note_end;
+volatile uint32_t sw_elapsed;
 volatile int sw_note_total, sw_note_oscis;
 
 static void sw_set_note(const note *note) {
@@ -92,17 +92,15 @@ static void sw_set_note(const note *note) {
 		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 1000 * note->len);
 	}
 	sw_elapsed += note->len;
-	++note_num;
 	if (sw_next_note_callback)
-		sw_next_note_callback(note_num, note);
+		sw_next_note_callback(sw_note - sw_note_begin, note);
 }
 
 void sw_play(const note *notes, int size) {
 	sw_playing = true;
-	sw_note = notes;
+	sw_note_begin = sw_note = notes;
 	sw_note_end = notes + size;
 	sw_elapsed = 0;
-	note_num = 0xFFFFFFFF;
 
 	ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 	sw_set_note(sw_note);
@@ -111,7 +109,14 @@ void sw_play(const note *notes, int size) {
 
 void sw_toggle_output(void) {
 	if (!sw_note_total) {
-		if (++sw_note < sw_note_end)
+		if (read_orbit_BTN1())
+			for (int i = 0; i < 4; ++i)
+				sw_elapsed += (++sw_note)->len;
+		else if (read_orbit_BTN2())
+			for (int i = 0; i < 6; ++i)
+				sw_elapsed -= sw_note--->len;
+		++sw_note;
+		if (sw_note_begin <= sw_note && sw_note < sw_note_end)
 			sw_set_note(sw_note);
 		else {
 			ROM_TimerDisable(TIMER0_BASE, TIMER_A);

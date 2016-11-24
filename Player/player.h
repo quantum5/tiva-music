@@ -30,11 +30,10 @@ typedef struct note {
 void sw_play(const note *notes, int size);
 void sw_wait(void);
 void sw_stop(void);
-extern volatile uint32_t note_num;
 extern volatile uint32_t sw_elapsed;
 extern volatile bool sw_playing; // Mutate at your own peril.
 
-typedef void (*sw_next_note_fn)(uint32_t note_num, const note *note);
+typedef void (*sw_next_note_fn)(int note_num, const note *note);
 void sw_next_note_register(sw_next_note_fn callback);
 
 // USB access functions.
@@ -45,12 +44,14 @@ void initialize_orbit_button(uint32_t base, uint8_t pin);
 void initialize_tiva_button(uint32_t base, uint8_t pin);
 #define initialize_orbit_BTN1() initialize_orbit_button(GPIO_PORTD_BASE, GPIO_PIN_2)
 #define initialize_orbit_BTN2() initialize_orbit_button(GPIO_PORTE_BASE, GPIO_PIN_0)
+#define initialize_orbit_SW1() initialize_orbit_button(GPIO_PORTA_BASE, GPIO_PIN_7)
 #define initialize_tiva_SW1() initialize_tiva_button(GPIO_PORTF_BASE, GPIO_PIN_4)
 #define initialize_tiva_SW2() initialize_tiva_button(GPIO_PORTF_BASE, GPIO_PIN_0)
 #define read_orbit_BTN1() (ROM_GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_2) == GPIO_PIN_2)
 #define read_orbit_BTN2() (ROM_GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_0) == GPIO_PIN_0)
 #define read_tiva_SW1() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4) != GPIO_PIN_4)
 #define read_tiva_SW2() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0) != GPIO_PIN_0)
+#define read_orbit_SW1() (ROM_GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_7) == GPIO_PIN_7)
 
 // Song data structures.
 typedef struct lyric_line {

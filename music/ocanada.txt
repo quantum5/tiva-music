@@ -1,0 +1,120 @@
+Instrument: Piano
+
+L: O Canada!
+A4: 2
+C5: 4+
+C5: 8
+F4: 2+
+L: Our home and
+G4: 4
+A4: 4
+Bb4: 4
+L: native land!
+C5: 4
+D5: 4
+G4: 2+
+0: 4
+
+L: True patriot
+A4: 2
+B4: 4+
+B4: 8
+L: love in all thy
+C5: 2+
+D5: 4
+E5: 4
+E5: 4
+L: sons command.
+D5: 4
+D5: 4
+C5: 2+
+
+L: With glowing 
+G4: 8
+A4: 8
+Bb4: 4+
+A4: 8
+L: hearts we see 
+G4: 4
+A4: 8+
+Bb4: 16
+C5: 4+
+L: thee rise,
+Bb4: 8
+A4: 4
+L: the True North
+Bb4: 8
+C5: 8
+D5: 4
+C5: 4
+L: strong and free!
+Bb4: 4
+A4: 4
+G4: 2+
+
+L: From far and
+G4: 8+
+A4: 16
+Bb4: 4+
+A4: 8
+L: wide, O Canada, 
+G4: 4
+A4: 8
+Bb4: 8
+C5: 4+
+Bb4: 8
+A4: 4
+L: we stand on
+A4: 4
+G4: 4
+C5: 4
+L: guard for thee.
+C5: 8
+B4: 8
+A4: 8
+B4: 8
+C5: 2+
+0: 4
+
+L: God keep our 
+A4: 2
+C5: 4+
+C5: 8
+L: land glorious 
+F4: 2+
+0: 4
+Bb4: 2
+D5: 4+
+L: and free!
+D5: 8
+G4: 2+
+
+L: O Canada, we 
+C5: 2
+C#5: 4+
+C#5: 8
+D5: 4
+Bb4: 4
+L: stand on guard 
+A4: 4
+G4: 4
+F4: 2
+L: for thee.
+G4: 2
+A4: 2+
+0: 4
+
+L: O Canada, we 
+C5: 2
+F5: 4+
+F5: 8
+D5: 4
+Bb4: 4
+L: stand on guard 
+A4: 4
+G4: 4
+C5: 2
+L: for thee.
+E4: 2
+F4: 2+
+0: 4

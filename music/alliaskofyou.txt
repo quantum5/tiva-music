@@ -1,80 +1,102 @@
 Instrument: Clarinet
 Speed: 3600
 
+L: Oublions la
 Eb4: 8
 Db4: 8
 Eb4: 8+
 F4: 16
+L: nuit noire
 F4: 8
 Ab3: 4
+L: Faisons s'enfuir
 F4: 8
 Eb4: 8
 Db4: 8
 Eb4: 8
+L: tes peurs
 F4: 8
 Ab4: 4
 0: 8
 
+L: Suis-moi, sans
 Bb4: 8
 F4: 4
 Ab4: 16
+L: rien à craindre
 Gb4: 8
 F4: 16
 Ab4: 8
 Eb4: 4
+L: Plus riens ne
 F4: 8
 Gb4: 8+
 Ab4: 16
+L: peut t'atteindre
 Gb4: 8
 F4: 8
 Ab4: 8
 Eb4: 4
 0: 8
 
+L: Que ma main
 Eb4: 8
 Db4: 8
 Eb4: 8+
+L: te guide
 F4: 16
 F4: 8
 Ab3: 4
+L: Que l'aube
 F4: 8
 Eb4: 8
+L: essuie
 Db4: 8
 Eb4: 8
+L: tes pleurs
 F4: 8
 Ab4: 4+
+L: Que moi, je
 Bb4: 8
 F4: 4
 Ab4: 16
+L: te rejoigne
 Gb4: 8
 F4: 16
 Ab4: 8
 Eb4: 4
+L: Te garde et
 F4: 8
 Gb4: 8
 Ab4: 8
+L: t'accompagne
 Gb4: 8+
 F4: 16
 Ab4: 8
 Eb4: 4
 0: 8
 
+L: Sache longtemps
 Eb5: 4
 Eb5: 4
 Eb5: 8
+L: me dire combien
 Db4: 8
 F4: 8
 Ab4: 8
 Bb4: 4
+L: tu m'aimes
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
 
+L: Trouble-moi en
 Db5: 4+
 C5: 8
 Bb4: 8
 Ab4: 8
+L: inventant demain
 Db4: 8
 F4: 8
 Ab4: 16
@@ -82,160 +104,203 @@ F4: 16
 Ab4: 2+
 0: 4
 
+L: Sache aussi
 Eb5: 4
 Eb5: 4
 Eb5: 8
+L: prédire des
 Db4: 8
 F4: 8
 Ab4: 8
+L: temps de calme
 Bb4: 4
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
+L: Promets-moi des
 F4: 16
 Gb4: 16
 Ab4: 4
 Ab4: 8
+L: jours heureux
 Ab4: 8
 Gb4: 8
 Db4: 8
+L: bientôt
 Bb3: 8
 Ab3: 2
 
 0: 8
+L: C'est tout ce
 Eb4: 8
 F4: 8
 Ab4: 8
+L: qu'il me faut
 F4: 8
 Eb4: 8
 Db4: 4
 
+L: Prends-moi
 Eb4: 8
 Db4: 8
+L: pour cachette
 Eb4: 8+
 F4: 16
 F4: 8
 Ab3: 4
 0: 8
+L: Quand la nuit
 Eb4: 8
 Db4: 8
 Eb4: 8+
+L: t'effraie
 F4: 16
 Ab4: 4
 0: 8
+L: Ici, nul ne
 Bb4: 8
 F4: 4
 Ab4: 16
 Gb4: 8
+L: t'affronte
 F4: 16
 Ab4: 8
 Eb4: 4
+L: La peur enfin
 F4: 8
 Gb4: 8+
 Ab4: 16
 Gb4: 8+
+L: se dompte
 F4: 16
 Ab4: 8
 Eb4: 4
 0: 8
 
+L: Je voudrais
 Eb4: 8
 Db4: 8
 Eb4: 8+
+L: d'un monde
 F4: 16
 F4: 8
 Ab3: 4
+L: Où règne un
 F4: 8
 Eb4: 8
 Db4: 8
+L: ciel de mai
 Eb4: 8+
 F4: 16
 Ab4: 4
 0: 8
+L: Et toi, qui
 Bb4: 8
 F4: 4
 Ab4: 16
+L: me désarmes
 Gb4: 8
 F4: 16
 Ab4: 8
 Eb4: 4
+L: Qui m'aime et
 F4: 8
 Gb4: 8+
 Ab4: 16
+L: qui me charme...
 Gb4: 8
 F4: 8
 Ab4: 8
 Eb4: 4
 0: 8
 
+L: Sans cesse je
 Ab4: 8
 Eb5: 4
 Eb5: 4
+L: chérirai tes
 Eb5: 8
 Db4: 8
 F4: 8
 Ab4: 8
+L: mots, tes gestes
 Bb4: 4
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
+L: Prends ma main
 Db5: 4+
 C5: 8
 Bb4: 8
+L: et fuis la
 Ab4: 8
 Db4: 8
 F4: 8
+L: solitude
 Ab4: 16
 F4: 16
 Ab4: 2+
 0: 4
 
+L: Si tu m'aimes
 Eb5: 4
 Eb5: 4
 Eb5: 8
+L: alors la vie
 Db4: 8
 F4: 8
 Ab4: 8
 Bb4: 4
+L: m'enchante
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
+L: Etre aimé de toi
 F4: 16
 Gb4: 16
 Ab4: 4
 Ab4: 8
 Ab4: 8
+L: est mon cadeau:
 Gb4: 8
 Db5: 8
 Bb4: 8
 Ab4: 2
+L: Christine, c'est
 Eb4: 8
 Eb4: 4
 Eb4: 8
+L: tout ce qu'il
 F4: 16
 Ab4: 16
 F4: 16
+L: me faut...
 Eb4: 16
 Db4: 4
 
+L: Ce soir chéris-
 Eb5: 4
 Eb5: 4
 Eb5: 8
 Db4: 8
+L: moi d'un mot,
 F4: 8
 Ab4: 8
 Bb4: 4
+L: d'un geste
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
+L: Sur un oui, je
 Db5: 4+
 C5: 8
 Bb4: 8
 Ab4: 8
+L: te suis aussitôt
 Db4: 8
 F4: 8
 Ab4: 16
@@ -243,31 +308,39 @@ F4: 16
 Ab4: 2+
 0: 4
 
+L: Chaque instant
 Eb5: 4
 Eb5: 4
 Eb5: 8
+L: fais-moi toucher
 Db4: 8
 F4: 8
 Ab4: 8
 Bb4: 4
+L: les anges...
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
+L: Si tu m'aimes
 Db4: 4+
 Ab4: 8
 Ab4: 8
+L: Mon seul credo
 Gb4: 8
 Db5: 8+
 Bb4: 16
 Ab4: 2
 
+L: Aime-moi, c'est
 Eb4: 8
 Eb4: 4
 Eb4: 8
+L: tout ce qu'il
 F4: 8
 Ab4: 8
 F4: 8+
+L: me faut...
 Eb4: 16
 Db4: 2
 
@@ -308,22 +381,26 @@ Bb4: 8
 C4: 4
 
 
-
+L: Etre aimé de toi
 F5: 16
 Gb5: 16
 Ab5: 4
 Ab5: 8
 Ab5: 8
+L: est mon cadeau:
 Gb5: 8
 Db5: 8
 Bb4: 8
 Ab4: 2
 
+L: Aime-moi, c'est
 Eb4: 8
 Eb4: 4
 Eb4: 8
+L: tout ce qu'il
 F4: 8
 Ab4: 8
 F4: 8
+L: me faut...
 Eb4: 8
 Db4: 1+
