@@ -7,6 +7,12 @@ extern uint32_t clock_rate;
 // Shoot yourself if you don't pass arrays.
 #define ARRAY_SIZE(arr) (sizeof(arr)/sizeof*(arr))
 
+// Enabling peripherals safely.
+#define SysPeripheralEnableWait(peripheral) do {\
+		ROM_SysCtlPeripheralEnable(peripheral); \
+		while (!ROM_SysCtlPeripheralReady(peripheral)); \
+	} while (0)
+
 // Background PWM playback functions.
 void pwm_setup(void);
 void pwm_play(const unsigned char *pcm, int size, int sample_rate);
@@ -44,14 +50,12 @@ void initialize_orbit_button(uint32_t base, uint8_t pin);
 void initialize_tiva_button(uint32_t base, uint8_t pin);
 #define initialize_orbit_BTN1() initialize_orbit_button(GPIO_PORTD_BASE, GPIO_PIN_2)
 #define initialize_orbit_BTN2() initialize_orbit_button(GPIO_PORTE_BASE, GPIO_PIN_0)
-#define initialize_orbit_SW1() initialize_orbit_button(GPIO_PORTA_BASE, GPIO_PIN_7)
 #define initialize_tiva_SW1() initialize_tiva_button(GPIO_PORTF_BASE, GPIO_PIN_4)
 #define initialize_tiva_SW2() initialize_tiva_button(GPIO_PORTF_BASE, GPIO_PIN_0)
 #define read_orbit_BTN1() (ROM_GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_2) == GPIO_PIN_2)
 #define read_orbit_BTN2() (ROM_GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_0) == GPIO_PIN_0)
 #define read_tiva_SW1() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_4) != GPIO_PIN_4)
 #define read_tiva_SW2() (ROM_GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_0) != GPIO_PIN_0)
-#define read_orbit_SW1() (ROM_GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_7) == GPIO_PIN_7)
 
 // Song data structures.
 typedef struct lyric_line {

@@ -25,26 +25,15 @@ int main(void) {
 	clock_rate = ROM_SysCtlClockGet();
 	printf("Updated clock rate to %u Hz.\n", clock_rate);
 
-	// Enable GPIO block F.
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA));
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF));
-
-    // Enable timers.
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
-    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0));
+	// Enable peripherals.
+	SysPeripheralEnableWait(SYSCTL_PERIPH_GPIOF);
+	SysPeripheralEnableWait(SYSCTL_PERIPH_TIMER0);
+    SysPeripheralEnableWait(SYSCTL_PERIPH_PWM1);
     ROM_IntMasterEnable();
 
-	// Enable PWM (for PF2).
-	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM1);
-	while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_PWM1));
-
 	// Gene Apperson, you need to enable the damn peripheral if you are using it in your library...
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD));
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
-    while (!ROM_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE));
+	SysPeripheralEnableWait(SYSCTL_PERIPH_GPIOD);
+    SysPeripheralEnableWait(SYSCTL_PERIPH_GPIOE);
 
 	// Make PWM clock run as fast as CPU clock.
 	ROM_SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
@@ -62,7 +51,6 @@ int main(void) {
 	initialize_menu();
 	initialize_orbit_BTN1();
 	initialize_orbit_BTN2();
-	initialize_orbit_SW1();
 	initialize_tiva_SW1();
 	initialize_tiva_SW2();
 
