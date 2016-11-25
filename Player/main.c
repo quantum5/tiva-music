@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "inc/tm4c123gh6pm.h"
 #include "inc/hw_memmap.h"
+#include "driverlib/adc.h"
 #include "driverlib/gpio.h"
 #include "driverlib/rom.h"
 #include "driverlib/pwm.h"
@@ -26,9 +27,11 @@ int main(void) {
 	printf("Updated clock rate to %u Hz.\n", clock_rate);
 
 	// Enable peripherals.
+	SysPeripheralEnableWait(SYSCTL_PERIPH_GPIOA);
 	SysPeripheralEnableWait(SYSCTL_PERIPH_GPIOF);
 	SysPeripheralEnableWait(SYSCTL_PERIPH_TIMER0);
     SysPeripheralEnableWait(SYSCTL_PERIPH_PWM1);
+    SysPeripheralEnableWait(SYSCTL_PERIPH_ADC0);
     ROM_IntMasterEnable();
 
 	// Gene Apperson, you need to enable the damn peripheral if you are using it in your library...
@@ -45,12 +48,19 @@ int main(void) {
 	GPIO_PORTF_DEN_R |= 0x01;
 	GPIO_PORTF_LOCK_R = 0;
 
+	// Using the potentiometer.
+	ROM_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3);
+	ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
+	ROM_ADCSequenceStepConfigure(ADC0_BASE, 0, 0, ADC_CTL_IE | ADC_CTL_END | ADC_CTL_CH0);
+	ROM_ADCSequenceEnable(ADC0_BASE, 0);
+
 	//printf("USB Host: %d\n", usb_ms_init());
     pwm_setup();
 
 	initialize_menu();
 	initialize_orbit_BTN1();
 	initialize_orbit_BTN2();
+	initialize_orbit_SW1();
 	initialize_tiva_SW1();
 	initialize_tiva_SW2();
 

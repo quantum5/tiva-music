@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
@@ -16,6 +17,16 @@
 const sw_song *sw_current;
 const char *sw_lyrics[2];
 static int sw_lyric_index, sw_expect_note;
+
+static void update_sw_speed(void) {
+	if (read_orbit_SW1()) {
+    	uint32_t reading;
+    	ROM_ADCProcessorTrigger(ADC0_BASE, 0);
+    	while (!ROM_ADCIntStatus(ADC0_BASE, 0, false));
+    	ROM_ADCSequenceDataGet(ADC0_BASE, 0, &reading);
+		sw_speed = (uint32_t) (1024 * pow(2, (2048 - (int) reading) / 1024.0));
+	} else sw_speed = 1024;
+}
 
 void play_sw_update_lyrics(int note_num, const note *note) {
 	if (note_num < sw_expect_note) {
@@ -37,6 +48,7 @@ void play_sw_song(const sw_song *song, const char *title) {
     sw_lyric_index = sw_expect_note = 0;
     if (song->lyrics_len)
     	sw_next_note_register(play_sw_update_lyrics);
+    update_sw_speed();
     sw_play(song->notes, song->notes_len);
 
     char buffer[17];
@@ -52,6 +64,7 @@ void play_sw_song(const sw_song *song, const char *title) {
 	OrbitOledSetFillPattern(OrbitOledGetStdPattern(2));
 
     while (sw_playing) {
+    	update_sw_speed();
     	shift = scroll_text(buffer, 16, title, length, shift);
 
 		OrbitOledClearBuffer();

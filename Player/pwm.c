@@ -77,19 +77,20 @@ volatile bool sw_playing;
 const note *sw_note_begin, *sw_note, *sw_note_end;
 volatile uint32_t sw_elapsed;
 volatile int sw_note_total, sw_note_oscis;
+volatile uint32_t sw_speed = 1024;
 
 static void sw_set_note(const note *note) {
 	if (note->freq) {
 		int cycles = clock_rate / (note->freq & 0x7FFF) / 2;
 		GPIO_PORTF_DATA_R |= GPIO_PIN_2;
 		sw_note_oscis = 0;
-		sw_note_total = note->len * (clock_rate / 1000) / cycles;
+		sw_note_total = note->len * sw_speed * (clock_rate / 1024000) / cycles;
 		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, cycles);
 	} else {
 		sw_note_total = sw_note_oscis = 0;
 		GPIO_PORTF_DATA_R &= ~GPIO_PIN_2;
 		ROM_TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 1000 * note->len);
+		ROM_TimerLoadSet(TIMER0_BASE, TIMER_A, clock_rate / 1024000 * note->len * sw_speed);
 	}
 	sw_elapsed += note->len;
 	if (sw_next_note_callback)
