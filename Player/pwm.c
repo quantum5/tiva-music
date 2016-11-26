@@ -77,11 +77,11 @@ volatile bool sw_playing;
 const note *sw_note_begin, *sw_note, *sw_note_end;
 volatile uint32_t sw_elapsed;
 volatile int sw_note_total, sw_note_oscis;
-volatile uint32_t sw_speed = 1024;
+volatile uint32_t sw_speed = 1024, sw_pitch = 1024;
 
 static void sw_set_note(const note *note) {
 	if (note->freq) {
-		int cycles = clock_rate / (note->freq & 0x7FFF) / 2;
+		int cycles = clock_rate / ((note->freq & 0x7FFF) * sw_pitch / 1024) / 2;
 		GPIO_PORTF_DATA_R |= GPIO_PIN_2;
 		sw_note_oscis = 0;
 		sw_note_total = note->len * sw_speed * (clock_rate / 1024000) / cycles;

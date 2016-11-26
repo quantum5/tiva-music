@@ -61,6 +61,7 @@ int main(void) {
 	initialize_orbit_BTN1();
 	initialize_orbit_BTN2();
 	initialize_orbit_SW1();
+	initialize_orbit_SW2();
 	initialize_tiva_SW1();
 	initialize_tiva_SW2();
 

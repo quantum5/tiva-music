@@ -18,14 +18,14 @@ const sw_song *sw_current;
 const char *sw_lyrics[2];
 static int sw_lyric_index, sw_expect_note;
 
-static void update_sw_speed(void) {
-	if (read_orbit_SW1()) {
-    	uint32_t reading;
-    	ROM_ADCProcessorTrigger(ADC0_BASE, 0);
-    	while (!ROM_ADCIntStatus(ADC0_BASE, 0, false));
-    	ROM_ADCSequenceDataGet(ADC0_BASE, 0, &reading);
-		sw_speed = (uint32_t) (1024 * pow(2, (2048 - (int) reading) / 1024.0));
-	} else sw_speed = 1024;
+static void update_sw_param(void) {
+	uint32_t reading;
+	ROM_ADCProcessorTrigger(ADC0_BASE, 0);
+	while (!ROM_ADCIntStatus(ADC0_BASE, 0, false));
+	ROM_ADCSequenceDataGet(ADC0_BASE, 0, &reading);
+	double scale = pow(2, (2048 - (int) reading) / 1024.0);
+	sw_speed = read_orbit_SW1() ? 1024 * scale : 1024;
+	sw_pitch = read_orbit_SW2() ? 1024 / scale : 1024;
 }
 
 void play_sw_update_lyrics(int note_num, const note *note) {
@@ -48,7 +48,7 @@ void play_sw_song(const sw_song *song, const char *title) {
     sw_lyric_index = sw_expect_note = 0;
     if (song->lyrics_len)
     	sw_next_note_register(play_sw_update_lyrics);
-    update_sw_speed();
+    update_sw_param();
     sw_play(song->notes, song->notes_len);
 
     char buffer[17];
@@ -64,7 +64,7 @@ void play_sw_song(const sw_song *song, const char *title) {
 	OrbitOledSetFillPattern(OrbitOledGetStdPattern(2));
 
     while (sw_playing) {
-    	update_sw_speed();
+    	update_sw_param();
     	shift = scroll_text(buffer, 16, title, length, shift);
 
 		OrbitOledClearBuffer();
