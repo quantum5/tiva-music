@@ -1,456 +1,582 @@
 Instrument: Clarinet
 Speed: 2000
 
+L: Arglos kommt sie
 Eb5: 4
 Eb5: 4
 F5: 4
 Db5: 4+
+L: daher, sorglos
 C5: 8
 Bb4: 4
 C5: 4
 Db5: 4
+L: und froh.
 Eb5: 4
 C5: 2+
+
+L: Sie ist verliebt.
 Eb5: 4
 Eb5: 4
 F5: 4
 Db5: 4+
+L: Ihr Herz brennt
 C5: 8
 Bb4: 4
 C5: 4
+L: lichterloh.
 Db5: 4
 G4: 4
 Ab5: 1
-
 0: 1
 
+L: Nun Herr?
 E4: 4
 E4: 4
 0: 4
+
 E4: 8
 E4: 8
 E4: 8
 E4: 4+
 0: 4
+
+L: Fort mit dir
 G4: 8
 G4: 8
 G4: 4
+L: denn das Netz
 A4: 8
 Bb4: 8
 F4: 4
+L: ist gespannt
 G4: 8
 Ab4: 8
 Eb4: 4
+L: meine Beute
 E4: 8
 F4: 8
 Db4: 4
 D4: 8
+L: ist hier...
 E4: 8
 D5: 1+
 
+L: Du kamst zu mir,
 D5: 4+
 E5: 4+
 C5: 4+
 Bb4: 4+
 0: 8
+L: endlich folgst
 D5: 8
 D5: 8
 E5: 8
+L: du dem Wunsch
 E5: 8
 E5: 8
 C5: 4
+L: in dir.
 C5: 8
 Bb4: 4+
 0: 8
+L: Jener Drang
 Bb4: 8
 Bb4: 8
 C5: 8
+L: führt dich her
 C5: 8
 C5: 8
 Ab4: 8
+L: denn er will
 Ab4: 8
 Ab4: 8
 Gb4: 8
+L: nicht mehr
 Gb4: 8
 Gb4: 8
+L: schweigen,
 E4: 4
 E4: 4+
 0: 8
+L: schweigen.
 D4: 4
 D4: 4+
 0: 8
+L: Ja, ich rief
 E5: 4+
 F#5: 4+
 Eb5: 4+
+L: dich,
 Db5: 4+
 0: 8
+L: dass die Glut in
 E5: 8
 E5: 8
 F#5: 8
 F#5: 8
+L: dir Flamme wird.
 F#5: 8
 Eb5: 4
 Eb5: 8
 Db5: 4
 0: 4
 
+L: In dir weicht
 C#5: 8
 C#5: 8
 D#5: 8
+L: jeder Zweifel
 D#5: 8
 D#5: 8
 B4: 8
 B4: 8
+L: von selbst, denn
 B4: 8
 B4: 8
 A4: 8
+L: du kommst und du
 B4: 8
 C#5: 8
 C#5: 8
 C#5: 8
+L: lieferst dich
 D#5: 8
 D#5: 8
 D#5: 8
+L: aus ganz von
 B4: 8
 B4: 8
 B4: 8
+L: selbst und nun
 B4: 8
 A4: 8
 A4: 8
+L: ist die Stunde
 A4: 8
 G4: 8
 G4: 8
 G4: 8
+L: hier, endlich
 G4: 8
 G4: 8
 G4: 8
+L: könntest du dich
 F4: 8
 F4: 8
 F4: 8
 F4: 8
+L: entscheiden,
 F4: 8
 Eb4: 4
 Eb4: 4+
 0: 2
 
+L: entscheiden.
 Eb4: 8
 D4: 4
 D4: 4+
 
-
+L: Nein, jetzt gibt
 C4: 2+
 F4: 8
 Eb4: 8
+L: es kein Zurück!
 F4: 8
 G4: 4+
 Ab4: 8
 G4: 2
 0: 2
 0: 8
+L: Durchbrich die
 F4: 8
 G4: 8
 F4: 8
+L: Schranken,
 A4: 4
 C5: 2
+L: und lass die
 Eb5: 4
 Eb5: 4
 F5: 4
+L: Welt der Zweifel
 Db5: 4
 C5: 4
 Bb4: 4+
 C5: 8
+L: hinter dir!
 Db5: 4
 Eb5: 4
 C5: 2
 0: 1
 
+L: Löse dich mit
 C4: 2+
 F4: 8
 E4: 8
 F4: 8
+L: einem Schritt
 G4: 4+
 Ab4: 8
 G4: 2
 0: 2
 0: 8
+L: von den Gedanken
 F4: 8
 G4: 8
 F4: 8
 A4: 4
 C5: 2
+L: verlaß die graue
 Eb5: 4
 Eb5: 4
 F5: 4
 Db5: 4+
 C5: 8
+L: Welt und träum
 Bb4: 4+
 C5: 8
 Db5: 4
+L: mit mir!
 Eb5: 4
 C5: 2
 0: 4
 
+L: Gemeinsam spült
 C5: 4
 C5: 4
 C5: 4
 C5: 4
+L: uns fort die
 Db5: 4
 F4: 4
 Ab4: 4
+L: Flut,
 Bb4: 4+
+L: kein Eisberg
 Bb4: 8
 Bb4: 4
 Bb4: 4
+L: kühlt die
 Bb4: 4
 B4: 4
+L: heisse Glut
 Gb4: 4
 Eb4: 4
 D4: 4
+L: wie Lava fühlt
 Gb4: 4
 B4: 4
 B4: 4
 Db5: 4
+L: sich dann das
 Bb4: 4
 Gb4: 4+
 Db4: 8
+L: Blut an.
 Db4: 1
 C4: 2+
 0: 4
 
+L: Nein, jetzt gibt
 C4: 2+
 F4: 8
 E4: 8
+L: es kein Zurück,
 F4: 8
 G4: 4+
 Ab4: 8
 G4: 2
 0: 2
 0: 8
+L: vergiss die
 F4: 8
 G4: 8
 F4: 8
+L: Fragen,
 A4: 4
 C5: 2
+L: nach vorne ist
 Eb5: 4
 Eb5: 4
 F5: 4
 Db5: 4
+L: gerichtet unser
 C5: 4
 Bb4: 4
 C5: 4
 Db5: 4
 Eb5: 4
+L: Blick...
 C5: 2+
+L: von nun an gibt
 C5: 4
 C5: 4
 Db5: 4
 F4: 4
+L: es kein Zurück!
 Ab4: 4
 Bb4: 2
 E4: 2
 F4: 1
 
 
-
+L: Durch dein Rufen
 D5: 4+
 E5: 4+
 C5: 4+
 Bb4: 4+
 0: 8
+L: nahmst du
 D5: 8
 D5: 8
+L: unsichtbar meine
 E5: 8
 E5: 8
 E5: 8
 C5: 4
 C5: 8
+L: Hand.
 Bb4: 4+
 0: 8
+L: Diese Stimme
 Bb4: 8
 Bb4: 8
 C5: 8
 C5: 8
+L: drang deutlich
 C5: 8
 Ab4: 8
 Ab4: 8
+L: zu mir durch das
 Ab4: 8
 F#4: 8
 F#4: 8
 F#4: 8
+L: Schweigen,
 E4: 8
 E4: 2
 0: 8
+L: Schweigen.
 D4: 4
 D4: 4+
+L: Ja nun komm ich,
 E5: 4+
 F#5: 4+
 D#5: 4+
 C#5: 4+
 0: 8
+L: endlich
 E5: 8
 E5: 8
+L: schwindet mein
 F#5: 8
 F#5: 8
 F#5: 8
+L: Widerstand...
 D#5: 4
 D#5: 8
 C#5: 4+
 0: 8
 
+L: Meine Arme
 C#5: 8
 C#5: 8
 D#5: 8
 D#5: 8
+L: verlangen nach
 D#5: 8
 B4: 8
 B4: 8
 B4: 8
+L: Deinen, ich will
 B4: 8
 A4: 8
 B4: 8
 C#5: 8
+L: meinen Körper
 C#5: 8
 C#5: 8
 D#5: 8
 D#5: 8
+L: mit Deinem
 D#5: 8
 B4: 8
 B4: 8
+L: vereinen.
 B4: 8
 B4: 8
 A4: 8
 A4: 8
+L: Nun ist die
 A4: 8
 G4: 8
 G4: 8
+L: Stunde hier,
 G4: 8
 G4: 8
 G4: 8
+L: nimm mich zu dir
 G4: 8
 F4: 8
 F4: 8
 F4: 8
+L: Ja hier steh ich
 F4: 8
 F4: 8
 Eb4: 4
 Eb4: 4+
 0: 8
 0: 2
+L: ergeb mich.
 Eb4: 8
 D4: 4
 D4: 4+
 0: 8
 
 
-
+L: Nein, jetzt gibt
 C4: 2+
 F4: 8
 E4: 8
+L: es kein Zurück,
 F4: 8
 G4: 4+
 Ab4: 8
 G4: 2
 0: 2
 0: 8
+L: Durchbrich die
 F4: 8
 G4: 8
 F4: 8
+L: Schranken.
 A4: 4
 C5: 2
+L: Ich frag nicht
 Eb5: 4
 Eb5: 4
 F5: 4
+L: mehr nach Böse
 Db5: 4
 C5: 4
 Bb4: 4+
 C5: 8
+L: oder Gut.
 Db5: 4
 Eb5: 4
 C5: 1
 0: 1
+L: Nun zählt nur
 C4: 2
 0: 8
 F4: 8
 E4: 8
+L: der Augenblick,
 F4: 8
 G4: 4+
 Ab4: 8
 G4: 2
 0: 2
 0: 8
+L: nicht die
 F4: 8
 G4: 8
+L: Gedanken.
 F4: 8
 A4: 4
 C5: 2
+L: Ich leb erst
 Eb5: 4
 Eb5: 4
 F5: 4
+L: wenn mein Licht
 Db5: 4
 C5: 4
 Bb4: 4+
+L: in deinem ruht.
 C5: 8
 Db5: 4
 Eb5: 4
 C5: 1
 0: 4
+
+L: Wann reisst die
 C5: 4
 C5: 4
 C5: 4
+L: Flut die Mauern
 C5: 4
 Db5: 4
 F4: 4
 Ab4: 4
+L: ein,
 Bb4: 4+
+L: wann wird die
 Bb4: 8
 Bb4: 4
 Bb4: 4
+L: Glut zum
 Bb4: 4
 B4: 4
+L: Flammenmeer?
 Gb4: 4
 Eb4: 4
 D4: 4
+L: Wann wird das
 F#4: 4
 B4: 4
 B4: 4
+L: Feuer uns
 Db5: 4
 Bb4: 4
 Gb4: 4+
+L: verzehren?
 Db4: 8
 Db4: 1
 C4: 2+
 0: 4
 
+L: Nein, jetzt gibt
 D4: 2+
 G4: 8
 F#4: 8
+L: es kein Zurück
 G4: 8
 A4: 4+
 Bb4: 8
 A4: 2
 0: 2
 0: 8
+L: Zerstör die
 G4: 8
 A4: 8
 G4: 8
+L: Brücke,
 B4: 4
 D5: 2
+L: lass alles
 F5: 4
 F5: 4
 G5: 4
+L: hinter dir und
 Eb5: 4
 D5: 4
 C5: 4+
 D5: 8
+L: nimm mich mit...
 Eb5: 4
 F5: 4
 D5: 2+
+L: von jetzt an
 D5: 4
 D5: 4
 Eb5: 4
+L: gibt es kein
 G4: 4
 Bb4: 4
 C5: 2
+L: Zurück.
 F#4: 2
 G4: 1
 0: 1
@@ -458,51 +584,66 @@ G4: 1
 0: 1
 
 Speed: 4000
+L: Gib mir Liebe
 Eb5: 4
 Eb5: 4
 Eb5: 8
 Db4: 8
+L: und die Kraft
 F4: 8
 Ab4: 8
 Bb4: 4
+L: zu leben.
 Bb4: 4
 Bb4: 8
 C4: 4+
+L: Rette mich vor
 Db5: 4+
 C5: 8
 Bb4: 8
 Ab4: 8
+L: meiner
 Db4: 8
 F4: 8
+L: Einsamkeit.
 Ab4: 16
 F4: 16
 Ab4: 2+
 0: 4
+L: Gib mir Liebe,
 Eb5: 4
 Eb5: 4
 Eb5: 8
 Db4: 8
+L: teil mit mir
 F4: 8
 Ab4: 8
 Bb4: 4
+L: mein Leben.
 Bb4: 4
 Bb4: 8
 C4: 4
 0: 8
+L: Geh von heut
 F5: 16
 Gb5: 16
 Ab5: 4
+L: an jeden Weg
 Ab5: 8
 Ab5: 8
 Gb5: 8
 Db5: 8
+L: mit mir...
 Bb4: 8
 Ab4: 2
+L: Christine,
 Eb5: 8
 Eb5: 4
+L: mehr will ich
 Eb5: 8
 F5: 8
 Ab5: 8
+L: nicht von...
 F5: 8
 Eb5: 8
 
