@@ -9,9 +9,9 @@ extern uint32_t clock_rate;
 
 // Enabling peripherals safely.
 #define SysPeripheralEnableWait(peripheral) do {\
-		ROM_SysCtlPeripheralEnable(peripheral); \
-		while (!ROM_SysCtlPeripheralReady(peripheral)); \
-	} while (0)
+        ROM_SysCtlPeripheralEnable(peripheral); \
+        while (!ROM_SysCtlPeripheralReady(peripheral)); \
+    } while (0)
 
 // Background PWM playback functions.
 void pwm_setup(void);
@@ -31,7 +31,7 @@ void pwm_finish_register(pwm_finish_fn callback);
 
 // Background square playback functions.
 typedef struct note {
-	uint16_t freq, len;
+    uint16_t freq, len;
 } note;
 void sw_play(const note *notes, int size);
 void sw_wait(void);
@@ -65,38 +65,38 @@ void initialize_tiva_button(uint32_t base, uint8_t pin);
 
 // Song data structures.
 typedef struct lyric_line {
-	int position;
-	const char *line;
+    int position;
+    const char *line;
 } lyric_line;
 
 typedef struct sw_song {
-	const struct note *notes;
-	int notes_len;
-	const struct lyric_line *lyrics;
-	int lyrics_len;
+    const struct note *notes;
+    int notes_len;
+    const struct lyric_line *lyrics;
+    int lyrics_len;
 } sw_song;
 
 typedef struct pcm_fragment {
-	const unsigned char *pcm;
-	int size;
-	int sample_rate;
+    const unsigned char *pcm;
+    int size;
+    int sample_rate;
 } pcm_fragment;
 
 // Menu structures.
-#define MENU_TYPE_MASK		0x0000000F
-#define MENU_TYPE_SW_SONG	0x00000001
-#define MENU_TYPE_PCM_SONG	0x00000002
-#define MENU_CHILD_IS_FUNC 	0x00010000
+#define MENU_TYPE_MASK      0x0000000F
+#define MENU_TYPE_SW_SONG   0x00000001
+#define MENU_TYPE_PCM_SONG  0x00000002
+#define MENU_CHILD_IS_FUNC  0x00010000
 
 struct menu_item;
 typedef struct menu_item (*get_child_menu_func)(struct menu_item *self, int *length);
 typedef void (*menu_item_play_func)(struct menu_item *data);
 typedef struct menu_item {
-	const char *name;
-	void *data;
-	uint32_t modifiers;
-	const struct menu_item *children;
-	uint32_t child_count;
+    const char *name;
+    void *data;
+    uint32_t modifiers;
+    const struct menu_item *children;
+    uint32_t child_count;
 } menu_item;
 
 int scroll_text(char *buffer, int size, const char *text, int len, int shift);

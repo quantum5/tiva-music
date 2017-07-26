@@ -8,7 +8,7 @@
  *
  *  Note: Make sure that C:/ti/TivaWare_C_Series-2.1.0.12573 is located under the "Includes" drop down
  *  in the Project. If not:
- *  	1. Go to Properties->Include Options and add this location
+ *      1. Go to Properties->Include Options and add this location
  *
  */
 
@@ -111,10 +111,10 @@
 /*
  * On board button (switch) definitions
  */
-#define lpSWPort	GPIO_PORTF_BASE
-#define lpSW1Port	GPIO_PORTF_BASE
-#define lpSW2Port	GPIO_PORTF_BASE
-#define lpSW1		GPIO_PIN_4
-#define lpSW2		GPIO_PIN_0
+#define lpSWPort    GPIO_PORTF_BASE
+#define lpSW1Port   GPIO_PORTF_BASE
+#define lpSW2Port   GPIO_PORTF_BASE
+#define lpSW1       GPIO_PIN_4
+#define lpSW2       GPIO_PIN_0
 
 #endif /* LAUNCHPAD_H_ */

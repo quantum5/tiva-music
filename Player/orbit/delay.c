@@ -1,26 +1,26 @@
 /************************************************************************/
-/*																		*/
-/*	delay.c	--	Time Delay Functions									*/
-/*																		*/
+/*                                                                      */
+/*  delay.c --  Time Delay Functions                                    */
+/*                                                                      */
 /************************************************************************/
-/*	Author: 	Gene Apperson											*/
-/*	Copyright 2013, Digilent Inc.										*/
+/*  Author:     Gene Apperson                                           */
+/*  Copyright 2013, Digilent Inc.                                       */
 /************************************************************************/
-/*  Module Description: 												*/
-/*																		*/
-/*																		*/
+/*  Module Description:                                                 */
+/*                                                                      */
+/*                                                                      */
 /************************************************************************/
-/*  Revision History:													*/
-/*																		*/
-/*	04/29/2011(GeneA): created for PmodOLED								*/
-/*	04/04/2013(JordanR):  Ported for Stellaris LaunchPad + Orbit BP		*/
-/*	06/06/2013(JordanR):  Prepared for release							*/
-/*																		*/
+/*  Revision History:                                                   */
+/*                                                                      */
+/*  04/29/2011(GeneA): created for PmodOLED                             */
+/*  04/04/2013(JordanR):  Ported for Stellaris LaunchPad + Orbit BP     */
+/*  06/06/2013(JordanR):  Prepared for release                          */
+/*                                                                      */
 /************************************************************************/
 
 
 /* ------------------------------------------------------------ */
-/*				Include File Definitions						*/
+/*              Include File Definitions                        */
 /* ------------------------------------------------------------ */
 
 #include "LaunchPad.h"
@@ -31,99 +31,99 @@
 extern "C" {
 #endif
 /* ------------------------------------------------------------ */
-/*				Local Type Definitions							*/
+/*              Local Type Definitions                          */
 /* ------------------------------------------------------------ */
 
 
 /* ------------------------------------------------------------ */
-/*				Global Variables								*/
+/*              Global Variables                                */
 /* ------------------------------------------------------------ */
 
 
 /* ------------------------------------------------------------ */
-/*				Local Variables									*/
+/*              Local Variables                                 */
 /* ------------------------------------------------------------ */
 
 
 /* ------------------------------------------------------------ */
-/*				Forward Declarations							*/
+/*              Forward Declarations                            */
 /* ------------------------------------------------------------ */
 
 
 /* ------------------------------------------------------------ */
-/*				Procedure Definitions							*/
+/*              Procedure Definitions                           */
 /* ------------------------------------------------------------ */
-/***	DelayInit
+/***    DelayInit
 **
-**	Parameters:
-**		none
+**  Parameters:
+**      none
 **
-**	Return Value:
-**		none
+**  Return Value:
+**      none
 **
-**	Errors:
-**		none
+**  Errors:
+**      none
 **
-**	Description:
-**		Initialized the hardware for use by delay functions. This
-**		initializes Timer 1 to count
+**  Description:
+**      Initialized the hardware for use by delay functions. This
+**      initializes Timer 1 to count
 */
 
 void
-DelayInit()	
-	{
+DelayInit() 
+    {
 
-	/* Configure Timer 1. 
-	*/
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+    /* Configure Timer 1. 
+    */
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
 
-	TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC_UP);
-	TimerEnable(TIMER1_BASE, TIMER_A);
+    TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC_UP);
+    TimerEnable(TIMER1_BASE, TIMER_A);
 
 
 }
 
 /* ------------------------------------------------------------ */
-/***	DelayMs
+/***    DelayMs
 **
-**	Parameters:
-**		cms			- number of milliseconds to delay
+**  Parameters:
+**      cms         - number of milliseconds to delay
 **
-**	Return Value:
-**		none
+**  Return Value:
+**      none
 **
-**	Errors:
-**		none
+**  Errors:
+**      none
 **
-**	Description:
-**		Delay the requested number of milliseconds. Uses Timer1.
+**  Description:
+**      Delay the requested number of milliseconds. Uses Timer1.
 */
 
 void
 DelayMs(int cms)
-	{
-	int		ims;
+    {
+    int     ims;
 
-	for (ims=0; ims<cms; ims++) {
-		/*
-		 * Clear Timer1
-		 */
-		HWREG(TIMER1_BASE + TIMER_O_TAV) = 0;
-		while (TimerValueGet(TIMER1_BASE, TIMER_A) < cntMsDelay);
-	}
+    for (ims=0; ims<cms; ims++) {
+        /*
+         * Clear Timer1
+         */
+        HWREG(TIMER1_BASE + TIMER_O_TAV) = 0;
+        while (TimerValueGet(TIMER1_BASE, TIMER_A) < cntMsDelay);
+    }
 
-}		
+}       
 
 /* ------------------------------------------------------------ */
-/***	ProcName
+/***    ProcName
 **
-**	Parameters:
+**  Parameters:
 **
-**	Return Value:
+**  Return Value:
 **
-**	Errors:
+**  Errors:
 **
-**	Description:
+**  Description:
 **
 */
 
